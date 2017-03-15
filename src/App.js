@@ -19,3 +19,7 @@ class App extends Component {
 }
 
 export default App;
+
+
+//Client Token: gAAAAABYyC1JvlxSq5rooQLqAkakeBpJnZHDLX7y-YujFfJPoLXtJ3KF3X1uW9fbIxhT73cxBn8P_T4QqwvPVnLSUhZgF_YjhA_iWtM3ca9yrEILuDefIFU4OigFSR52FVhjfG8nZSSHGWIdIneDCDftwxeu-G35NokGKyWB1bvr3ciAFx3eVso=
+//Client Secret: GRETvJSoiwGSDZBOuIQL_Rc7pbSNzgR3
