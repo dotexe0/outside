@@ -1,5 +1,5 @@
 require('babel-register');
 require('babel-polyfill');
-require('./server/index.js');
+require('./js/server/index.js');
 
-console.log("HELLO??");
+console.log("Server files imported successfully...");
