@@ -8,11 +8,19 @@ class App extends Component {
       <div className="App">
         <div className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
-          <h2>Welcome to React</h2>
+          <h2>Outside</h2>
         </div>
         <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
+          <code>Book your next event with Outside</code> 
         </p>
+        <div>
+
+          <li>Create a new Event</li>
+          <li>Review an existing event</li>
+          <li>Have an event ID? Search for it here: 
+            <input type="text"></input>
+          </li>
+        </div>
       </div>
     );
   }

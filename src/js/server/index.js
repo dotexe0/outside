@@ -2,8 +2,7 @@ import express from 'express';
 import dbConfig from './config/db';
 import middlewareConfig from './config/middlewares';
 
-import eventsRouter from './modules/events/routes';
-import usersRouter from './modules/users/routes'
+import { EventRoutes } from './modules/';
 
 const app = express();
 
@@ -12,7 +11,11 @@ dbConfig();
 
 //middlewares
 middlewareConfig(app);
-const PORT = process.env.PORT || 3001;
+
+//end points
+app.use('/api', [EventRoutes]);
+
+const PORT = process.env.PORT || 3000;
 
 app.listen(PORT, err => {
   if(err) {
