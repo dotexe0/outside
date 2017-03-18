@@ -1,7 +1,8 @@
 import mongoose from 'mongoose';
 
+mongoose.Promise = global.Promise;
+
 export default () => {
-    mongoose.Promise = global.Promise;
     mongoose.connect('mongodb://localhost/outside')
     mongoose.connection
       .once('open', () => console.log('MongoDB running...'))

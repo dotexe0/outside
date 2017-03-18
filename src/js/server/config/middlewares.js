@@ -5,5 +5,5 @@ export default app => {
     app.use(bodyParser.json());
     app.use(bodyParser.urlencoded({ extended: false }));
     app.use(morgan('dev')); // console log server requests;
-    // console.log("Middlewares loaded...");
+    console.log("Middlewares loaded...");
 }
