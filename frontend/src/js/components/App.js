@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import logo from '../../logo.svg';
 import '../../css/App.css';
+import SearchBar from './SearchBar';
 
 class App extends Component {
   render() {
@@ -14,12 +15,10 @@ class App extends Component {
           <code>Book your next event with Outside</code> 
         </p>
         <div>
-
           <li>Create a new Event</li>
           <li>Review an existing event</li>
-          <li>Have an event ID? Search for it here: 
-            <input type="text"></input>
-          </li>
+          <li>Have an event ID?</li>
+          <SearchBar />
         </div>
       </div>
     );
