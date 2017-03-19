@@ -2,17 +2,25 @@ import React, { Component } from 'react';
 import logo from '../../logo.svg';
 import '../../css/App.css';
 import SearchBar from './SearchBar';
+import styled from 'styled-components';
+
+  const AppWrapper = styled.div`
+    align-items: center;
+    justify-content: flex-start;
+    flex-diretion: column;
+    flex: 1;
+  `;
 
 class App extends Component {
   render() {
     return (
-      <div className="App">
+      <AppWrapper className="App">
         <div className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
           <h2>Outside</h2>
         </div>
         <p className="App-intro">
-          <code>Book your next event with Outside</code> 
+          <code>Book your next event with Outside</code>
         </p>
         <div>
           <li>Create a new Event</li>
@@ -20,7 +28,7 @@ class App extends Component {
           <li>Have an event ID?</li>
           <SearchBar />
         </div>
-      </div>
+      </AppWrapper>
     );
   }
 }
