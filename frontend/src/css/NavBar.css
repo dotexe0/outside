@@ -1,0 +1,16 @@
+/*.navBar {
+  list-style: none;
+  display: inline-flex;
+  padding: 0px;
+  margin: 0px;
+}
+
+.navBar li {
+  box-sizing: border-box;
+  margin-right: 40px;
+  padding: 5px;
+}
+
+.profile {
+  float: right;
+}*/
