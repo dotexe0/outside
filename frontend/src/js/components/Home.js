@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import logo from '../../logo.svg';
 import styled from 'styled-components';
 
 import '../../css/Home.css';
@@ -7,32 +6,53 @@ import NavBar from './NavBar';
 import SearchBar from './SearchBar';
 
   const HomeWrapper = styled.div`
-    align-items: center;
-    justify-content: flex-start;
-    flex-diretion: column;
-    flex: 1;
-    color: red;
+
   `;
 
 class Home extends Component {
   render() {
     return (
       <HomeWrapper>
-      <NavBar />
+        <NavBar />
+        <SearchBar />
+
         <div className="Home-header">
-          <img src={logo} className="Home-logo" alt="logo" />
-          <h2>Outside</h2>
+          <h2 className="text-center">Outside</h2>
         </div>
-        <p className="Home-intro">
+
+        <p className="text-center">
           <code>Book your next event with Outside</code>
         </p>
-        <div>
-        <ul>
-          <li className="card">Create a new Event</li>
-          <li>Review an existing event</li>
-          <li>Have an event ID?</li>
-        </ul>
-          <SearchBar />
+
+        <div className="text-center">
+          <ul className="list-unstyled">
+            <li className="card">Create a new Event</li>
+            <li>Review an existing event</li>
+            <li>Have an event ID?</li>
+          </ul>
+        </div>
+
+      <div className="text-center">
+        <div className="row">
+          <div className="col-sm-6">
+            <div className="card">
+              <div className="card-block">
+                <h3 className="card-title">Create a new Event</h3>
+                <p className="card-text">...</p>
+                <a href="#" className="btn btn-primary">Create</a>
+              </div>
+            </div>
+          </div>
+          <div className="col-sm-6">
+            <div className="card">
+              <div className="card-block">
+                <h3 className="card-title">Find an existing Event</h3>
+                <p className="card-text">...</p>
+                <a href="#" className="btn btn-primary">Find Event</a>
+              </div>
+            </div>
+          </div>
+          </div>
         </div>
         {this.props.children}
       </HomeWrapper>
