@@ -17,3 +17,12 @@ export const createEvent = async (req, res) => {
     return res.status(500).json({ error: true });
   }
 };
+
+export const getAllEvents = async (req, res) => {
+  try {
+    return res.status(200).json({ events: await Event.find({}) });
+  } catch (error) {
+    console.log('Get all events error', error);
+    return res.status(404).json({ error: true });
+  }
+  };
