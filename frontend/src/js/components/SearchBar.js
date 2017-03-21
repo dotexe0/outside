@@ -11,18 +11,13 @@ class SearchBar extends React.Component {
     loading: false
   }
 
-  // not working right now
-  // const isLoading = () => {
-  //   const loading = this.state.loading;
-  //   if (loading) {
-  //     return <h1> Loading... </h1>
-  // };
-
-  onSearchAPI = async (event) => {
+   onSearchAPI = async (event) => {
     event.preventDefault();
+
     // this.props.searchGame(this.state.query)
     browserHistory.push('/')
-    console.log("Hello")
+    console.log("Working...")
+    this.setState({ query: ''});
   }
 
   _onChangeTerm = e => this.setState({ query: e.target.value });
