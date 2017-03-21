@@ -1,8 +1,8 @@
 import Event from './model';
 
 export const createEvent = async (req, res) => {
-  const args = req.body;
-  const newEvent = new Event({ ...args });
+  const { time, ...args } = req.body;
+  const newEvent = new Event({ ...args, time: Date(time) });
 
   if (!args.eventName) {
     return res.status(400).json({ error: true, message: 'Title is required' });
@@ -26,3 +26,6 @@ export const getAllEvents = async (req, res) => {
     return res.status(404).json({ error: true });
   }
   };
+
+
+//might need to do spread operator if i get array of arrays
