@@ -1,11 +1,17 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router';
+import {connect} from 'react-redux';
+
 import '../../css/NavBar.css';
 
 class NavBar extends Component {
+
+  _getAllEvents = async (event)=> {
+    this.props.getAllEvents();
+  }
+
   render() {
       return (
-      <div>
         <nav className="navbar navbar-default">
         <div className="container-fluid">
           <div className="navbar-header">
@@ -13,16 +19,19 @@ class NavBar extends Component {
           </div>
           <div className="collapse navbar-collapse" id="bs-navbar-collapse-1">
             <ul className="nav navbar-nav">
-              <li><Link to="/explore">Events<span className="sr-only"></span></Link></li>
+              <li><Link to="/explore" onClick={ this._getAllEvents }>Events<span className="sr-only"></span></Link></li>
               <li><Link to="/about">About</Link></li>
             </ul>
           </div>
           </div>
         </nav>
-        <div className="container">
-        </div>
-      </div>
     );
   };
 };
-export default NavBar;
+
+const mapStateToProps = state => ({
+  ...state
+});
+
+// export default connect(mapStateToProps, { searchGame })(SearchBar);
+export default connect(mapStateToProps)(NavBar);
