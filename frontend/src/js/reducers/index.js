@@ -1,4 +1,4 @@
-import { CREATE_EVENT } from '../actions';
+import { CREATE_EVENT, GET_ALL_EVENTS } from '../actions';
 
 const initialState = {
   loading: false,
@@ -12,6 +12,12 @@ export default (state=initialState, action) => {
       return {
         ...state,
         events: action.event
+      }
+
+    case GET_ALL_EVENTS:
+      console.log("getting all events", action);
+      return {
+        events: action.events
       }
     default:
       return state;

@@ -1,13 +1,16 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router';
 import {connect} from 'react-redux';
+import { getAllEvents } from '../actions';
 
 import '../../css/NavBar.css';
 
 class NavBar extends Component {
 
-  _getAllEvents = async (event)=> {
+  _getAllEvents = (e)=> {
+    // e.preventDefault();
     this.props.getAllEvents();
+    console.log('getting...')
   }
 
   render() {
