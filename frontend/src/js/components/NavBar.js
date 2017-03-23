@@ -7,8 +7,7 @@ import '../../css/NavBar.css';
 
 class NavBar extends Component {
 
-  _getAllEvents = (e)=> {
-    // e.preventDefault();
+  _getAllEvents = () => {
     this.props.getAllEvents();
     console.log('getting...')
   }
@@ -22,7 +21,7 @@ class NavBar extends Component {
           </div>
           <div className="collapse navbar-collapse" id="bs-navbar-collapse-1">
             <ul className="nav navbar-nav">
-              <li><Link to="/explore" onClick={ this._getAllEvents }>Events<span className="sr-only"></span></Link></li>
+              <li><Link to="/explore">Events<span className="sr-only"></span></Link></li>
               <li><Link to="/about">About</Link></li>
             </ul>
           </div>
@@ -37,4 +36,4 @@ const mapStateToProps = state => ({
 });
 
 // export default connect(mapStateToProps, { searchGame })(SearchBar);
-export default connect(mapStateToProps)(NavBar);
+export default connect(mapStateToProps, { getAllEvents })(NavBar);
