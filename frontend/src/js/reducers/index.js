@@ -1,4 +1,4 @@
-import { CREATE_EVENT, GET_ALL_EVENTS } from '../actions';
+import { CREATE_EVENT, GET_ALL_EVENTS, DELETE_EVENT } from '../actions';
 
 const initialState = {
   loading: false,
@@ -8,17 +8,21 @@ const initialState = {
 export default (state=initialState, action) => {
   switch(action.type) {
     case CREATE_EVENT:
-      console.log("create event", action);
+      console.log("create event", action.payload.event);
       return {
         ...state,
-        events: action.event
+        events: [...state.events, action.payload.event]
       }
 
     case GET_ALL_EVENTS:
-      console.log("getting all events", action);
+      console.log("getting all events: ", action.payload);
       return {
-        events: action.events
+        events: [...action.payload.events]
       }
+    case DELETE_EVENT:
+    return {
+      events: state.events.filter(item => item._id !== action.payload)
+    }
     default:
       return state;
   }

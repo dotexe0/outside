@@ -10,6 +10,7 @@ import App from './js/components/App';
 import Home from './js/components/Home';
 import About from './js/components/About';
 import Explore from './js/components/Explore';
+import EventPage from './js/components/EventPage';
 import './css/index.css';
 
 const routes = (
@@ -18,7 +19,7 @@ const routes = (
       <Route path="/" component={App}>
         <IndexRoute component={Home}/>
         <Route path="/about" component={About} />
-        <Route path="/explore" component={Explore} />
+        <Route path="/explore" component={EventPage} />
       </Route>
     </Router>
   </Provider>
