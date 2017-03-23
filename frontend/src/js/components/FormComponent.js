@@ -1,6 +1,5 @@
-
 import React, { Component } from 'react';
-import axios from 'axios';
+// import axios from 'axios';
 import {connect} from 'react-redux';
 import { createEvent } from '../actions';
 // import Moment from 'moment';
@@ -30,8 +29,6 @@ class FormComponent extends Component {
     // console.log(e.target.value.split(', '));
     this.setState({ invited: e.target.value.split(', ') });
   }
-
-
 
   render() {
     return (

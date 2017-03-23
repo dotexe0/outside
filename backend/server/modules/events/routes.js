@@ -5,7 +5,7 @@ const routes = new Router();
 
 routes.post('/events', EventController.createEvent);
 routes.get('/events', EventController.getAllEvents);
-
+routes.delete('/events/:id', EventController.deleteEvent);
 
 
 export default routes;

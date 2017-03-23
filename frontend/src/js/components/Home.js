@@ -30,16 +30,15 @@ class Home extends Component {
 
         <div className="text-center">
           <ul className="list-unstyled">
-            <li className="card">Create a new Event</li>
-            <li>Review an existing event</li>
-            <li>Have an event ID?</li>
+            <li className="card"><h3>Creating events has never been easier!</h3></li>
+            <li><h4>Invite your friends, colleagues, and enemies all within the same app.</h4></li>
           </ul>
         </div>
 
       <div className="text-center">
         <div className="row">
 
-          <div className="col-sm-4 col-md-4">
+          <div className="col-xs-12 col-md-4 col-md-offset-1">
             <div className="card">
               <div className="card-block">
                 <h3 className="card-title">Create a new Event</h3>
@@ -49,7 +48,7 @@ class Home extends Component {
             </div>
           </div>
 
-          <div className="col-sm-4 col-md-4">
+          <div className="col-xs-12 col-md-4 col-md-offset-1">
             <div className="card">
               <div className="card-block">
                 <h3 className="card-title">Find an existing Event</h3>
