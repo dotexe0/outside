@@ -1,8 +1,8 @@
 import Event from './model';
 
 export const createEvent = async (req, res) => {
-  const args = req.body;
-  const newEvent = new Event({ ...args });
+  const { time, ...args } = req.body;
+  const newEvent = new Event({ ...args, time: Date(time) });
 
   if (!args.eventName) {
     return res.status(400).json({ error: true, message: 'Title is required' });
@@ -25,4 +25,14 @@ export const getAllEvents = async (req, res) => {
     console.log('Get all events error', error);
     return res.status(404).json({ error: true });
   }
-  };
+};
+
+export const deleteEvent = async (req, res) => {
+  try {
+    await Event.findOneAndRemove(req.params.id);
+    return res.sendStatus(200);
+  } catch (error) {
+    console.log('Get all events error', error);
+    return res.status(400).json({ error: true });
+  }
+};
