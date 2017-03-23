@@ -27,8 +27,8 @@ export const getAllEvents = () => async dispatch => {
 export const DELETE_EVENT = 'DELETE_EVENT';
 export const deleteEvent = (id) => async dispatch => {
   try {
-    const res = await axios.delete(`/api/events/${id}`);
-      dispatch({ type: DELETE_EVENT, payload: id });
+    await axios.delete(`/api/events/${id}`);
+    dispatch({ type: DELETE_EVENT, payload: id });
     // console.log("events", events);
   } catch (e) {
     console.log("error getting all..", e)

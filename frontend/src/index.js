@@ -9,7 +9,7 @@ import store from './js/store';
 import App from './js/components/App';
 import Home from './js/components/Home';
 import About from './js/components/About';
-import Explore from './js/components/Explore';
+// import Explore from './js/components/Explore';
 import EventPage from './js/components/EventPage';
 import './css/index.css';
 
