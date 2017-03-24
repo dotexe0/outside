@@ -17,6 +17,12 @@ class FormComponent extends Component {
 
   _createEvent = async (e) => {
     this.props.createEvent(this.state);
+    this.setState({
+      eventName: '',
+      time: '',
+      description: '',
+      invited: []
+    });
 }
 
   _eventName = (e) => this.setState({ eventName: e.target.value })
