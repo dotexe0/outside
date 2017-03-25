@@ -3,7 +3,8 @@ import './config/db'; // database
 
 import middlewareConfig from './config/middlewares';
 
-import { EventRoutes } from './modules/';
+import { EventRoutes } from './modules/events';
+import { UserRoutes } from './modules/users';
 
 const app = express();
 
@@ -12,6 +13,8 @@ middlewareConfig(app);
 
 //end points
 app.use('/api', [EventRoutes]);
+app.use('/login', [UserRoutes]);
+app.use('/signup', [UserRoutes]);
 
 const PORT = process.env.PORT || 3001;
 
