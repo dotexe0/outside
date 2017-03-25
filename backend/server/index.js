@@ -12,9 +12,9 @@ const app = express();
 middlewareConfig(app);
 
 //end points
-app.use('/api', [EventRoutes]);
-app.use('/login', [UserRoutes]);
-app.use('/signup', [UserRoutes]);
+app.use('/api', [EventRoutes, UserRoutes]);
+// app.use('/login', [UserRoutes]);
+// app.use('/signup', [UserRoutes]);
 
 const PORT = process.env.PORT || 3001;
 
