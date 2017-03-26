@@ -11,6 +11,7 @@ import Home from './js/components/Home';
 import About from './js/components/About';
 // import Explore from './js/components/Explore';
 import EventPage from './js/components/EventPage';
+import SignupForm from './js/components/SignupForm';
 import './css/index.css';
 
 const routes = (
@@ -19,7 +20,8 @@ const routes = (
       <Route path="/" component={App}>
         <IndexRoute component={Home}/>
         <Route path="/about" component={About} />
-        <Route path="/explore" component={EventPage} />
+        <Route path="/events" component={EventPage} />
+        <Route path="/signup" component={SignupForm} />
       </Route>
     </Router>
   </Provider>
