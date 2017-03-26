@@ -2,6 +2,8 @@ import bodyParser from 'body-parser';
 import morgan from 'morgan';
 import cookieParser from 'cookie-parser';
 import session from 'express-session';
+import passport from 'passport';
+import flash from 'connect-flash';
 
 export default app => {
     app.use(bodyParser.json());
@@ -16,5 +18,6 @@ export default app => {
                     resave: true
                   }));
       console.log('Session loaded...');
-
+    app.use(passport.initialize());
+    app.use(passport.session());
 };
