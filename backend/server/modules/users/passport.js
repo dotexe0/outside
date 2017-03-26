@@ -1,8 +1,9 @@
-import { Strategy as LocalStrategy } from 'passport-local';
+import passport from 'passport';
+import LocalStrategy from 'passport-local';
 import User from './model';
 
 //export module to expose it in our app
-export default passport => {
+// export default passport => {
   // ======================
   // PASSPORT SESSION SETUP
   // ======================
@@ -27,30 +28,32 @@ export default passport => {
   // ======================
   // LOCAL LOGIN
   // ======================
-  passport.use('local-login', new LocalStrategy({
-    usernameField: 'email',
-    passwordField: 'password',
-    passReqToCallback: true,
-    session: true
-  },
-    async (req, email, password, done) => {
-      try {
-        const user = await User.findOne({ 'local.email': email });
-        if (!user) {
-          return done(null, false, { message: 'No login found for that email address.' });
-        }
-        try {
-          if (!user.comparePassword(password)) {
-            return done(null, false, { message: 'Wrong password!' });
-          }
-        } catch (e) {
-          throw Error(e);
-        }
-        return done(null, user);
-      } catch (e) {
-        throw Error(e);
-      }
-    }
-  ));
+
+const localOptions = {
+  usernameField: 'email'
 };
 
+const localLogin = new LocalStrategy(localOptions, async (email, password, done) => {
+  // console.log('email, ', email);
+  // console.log('password, ', password);
+  try {
+    const user = await User.findOne({ 'local.email': email });
+    // console.log('user found: ', user);
+    if (!user) {
+      return done(null, false, { message: 'No login found for that email address.' });
+    }
+    user.comparePassword(password, (err, isMatch) => {
+      if (err) {
+        done(err);
+      } else if (!isMatch) {
+        done(null, false, { message: 'Login and password did not match! ' });
+      } else {
+        done(null, user);
+      }
+    });
+  } catch (e) {
+    throw Error(e);
+  }
+});
+
+passport.use(localLogin);

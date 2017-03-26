@@ -20,16 +20,16 @@ UserSchema.pre('save', function (next) {
     this.local.password = hashPasword;
     next();
   });
-
-  // method for comapre password
-  UserSchema.statics.comparePassword = function (canditePassword, cb) {
-    // compare the password from the front-end and check if match the crypt one
-    compare(canditePassword, this.local.password, (err, isMatch) => {
-      if (err) { return cb(err); }
-      // return no error and the match if this is good
-      cb(null, isMatch);
-    });
-  };
 });
+
+// method for comapre password
+UserSchema.methods.comparePassword = function (canditePassword, cb) {
+  // compare the password from the front-end and check if match the crypt one
+  compare(canditePassword, this.local.password, (err, isMatch) => {
+    if (err) { return cb(err); }
+    // return no error and the match if this is good
+    cb(null, isMatch);
+  });
+};
 
 export default mongoose.model('User', UserSchema);
