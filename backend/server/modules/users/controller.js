@@ -6,7 +6,7 @@ import User from './model';
   // LOCAL LOGIN
   // ======================
 export const userLogin = (req, res, next) => {
-  // console.log('User:', req.user);
+  console.log('req, body:', req.body);
   res.send({ user: req.user });
   return next();
 };
