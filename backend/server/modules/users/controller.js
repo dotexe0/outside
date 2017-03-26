@@ -1,7 +1,23 @@
+import passport from 'passport';
+// import * from './passport';
 import User from './model';
-import passport from './passport';
 
-export const userLogin = async (req, res) => {
+  // ======================
+  // LOCAL LOGIN
+  // ======================
+export const userLogin = (req, res, next) => {
+  passport.authenticate('local-login', { successRedirect: '/',
+                                   failureRedirect: '/login',
+                                 }, (err, user) => {
+    if (err) {
+      return res.status(401).json({ success: false, message: 'An Error occured during Authentication!' });
+    }
+    if (!user) {
+      return res.status(401).json({ success: false, message: 'No user found!' });
+    }
+    return res.status(200).json({ success: true, message: 'Successful login!' });
+  })(req, res, next);
+
   // const { ...args } = req.body;
   // req.user
 };
@@ -11,7 +27,7 @@ export const userLogin = async (req, res) => {
   // ======================
 export const userSignup = async (req, res) => {
   const { email, password } = req.body;
-  console.log('req.body: ', req.body);
+  // console.log('req.body: ', req.body);
   try {
         const user = await User.findOne({ 'local.email': email });
         if (user) {

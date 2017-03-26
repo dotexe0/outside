@@ -20,7 +20,7 @@ export default passport => {
       const user = await User.findById(id);
       done(null, user);
     } catch (e) {
-      done(e);
+      throw Error(e);
     }
   });
 
