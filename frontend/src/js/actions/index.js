@@ -21,7 +21,7 @@ export const getAllEvents = () => async dispatch => {
   } catch (e) {
     console.log("error getting all..", e)
   }
-}
+};
 
 
 export const DELETE_EVENT = 'DELETE_EVENT';
@@ -33,17 +33,26 @@ export const deleteEvent = (id) => async dispatch => {
   } catch (e) {
     console.log("error getting all..", e)
   }
+};
+
+export const SIGNUP = 'SIGNUP';
+export const signup = (email, password) => async dispatch => {
+  try {
+    await axios({
+      method: 'post',
+      url: '/api/signup',
+      data: {
+        email: email,
+        password: password
+      }
+    })
+    .then(res => {
+      console.log('res: ', res.data.user);
+      const { events } = res.data.user.local;
+      dispatch({ type: SIGNUP, payload: { events }});
+    })
+  } catch (e) {
+    console.log('error signing up...', e)
+  }
 }
 
-
-// export const CREATE_EVENT = 'CREATE_EVENT';
-// export const createEvent = events => async dispatch => {
-//   dispatch({type: CREATE_EVENT});
-//   try {
-//     const res = await axios.post('/api/events', event);
-//     console.log("res", res);
-//     return res.data;
-//   } catch (e) {
-//     console.log("error, ", e);
-//   }
-// };

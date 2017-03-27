@@ -12,6 +12,7 @@ import About from './js/components/About';
 // import Explore from './js/components/Explore';
 import EventPage from './js/components/EventPage';
 import SignupForm from './js/components/SignupForm';
+import LoginForm from './js/components/LoginForm';
 import './css/index.css';
 
 const routes = (
@@ -22,6 +23,7 @@ const routes = (
         <Route path="/about" component={About} />
         <Route path="/events" component={EventPage} />
         <Route path="/signup" component={SignupForm} />
+        <Route path="/login" component={LoginForm} />
       </Route>
     </Router>
   </Provider>

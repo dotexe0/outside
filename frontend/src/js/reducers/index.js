@@ -1,12 +1,24 @@
-import { CREATE_EVENT, GET_ALL_EVENTS, DELETE_EVENT } from '../actions';
+import { SIGNUP, CREATE_EVENT, GET_ALL_EVENTS, DELETE_EVENT } from '../actions';
 
 const initialState = {
   loading: false,
-  events: []
+  events: [],
+  user: {
+    events: []
+  }
 }
 
 export default (state=initialState, action) => {
   switch(action.type) {
+    case SIGNUP:
+    console.log('signup: ', action.payload);
+    return {
+      ...state,
+      user: {
+        ...action.payload
+      }
+    }
+
     case CREATE_EVENT:
       console.log("create event", action.payload.event);
       return {

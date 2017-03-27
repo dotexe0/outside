@@ -1,20 +1,39 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { signup } from '../actions';
 
-export default class SignupForm extends Component {
-  state = {}
+ class SignupForm extends Component {
+  state = {
+    email: '',
+    password: '',
+    user: {
+      events: []
+    }
+  }
+
+  _handleChange = e => {
+    this.setState({
+      [e.target.id]: e.target.value
+    })
+    // console.log(e.target.id);
+  }
+
+  _getUserProfile = (e) => {
+    e.preventDefault();
+    this.props.signup(this.state.email, this.state.password);
+  }
 
   render() {
     return (
       <div>
-        <form className="signup-form" action="/api/signup" method="post">
+        <form className="signup-form" onSubmit={this._getUserProfile}>
           <div className="form-group">
             <label>Username</label>
-            <input type="text" className="form-control" name="email" id="email"></input>
+            <input onChange={this._handleChange} type="text" className="form-control" name="email" id="email" />
           </div>
           <div className="form-group">
             <label>Password</label>
-            <input type="password" className="form-control" name="password" id="password"></input>
+            <input onChange={this._handleChange} type="password" className="form-control" name="password" id="password" />
           </div>
           <button type="submit" className="btn btn-primary btn-lg">Sign Up</button>
         </form>
@@ -22,3 +41,10 @@ export default class SignupForm extends Component {
     )
   }
 }
+
+export default connect(
+  state => ({
+    user: state.user
+   }),
+  { signup }
+)(SignupForm);
