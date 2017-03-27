@@ -56,3 +56,23 @@ export const signup = (email, password) => async dispatch => {
   }
 }
 
+export const LOGIN = 'LOGIN';
+export const login = (email, password) => async dispatch => {
+  try {
+    await axios({
+      method: 'post',
+      url: '/api/login',
+      data: {
+        email: email,
+        password: password
+      }
+    })
+    .then(res => {
+      console.log('res: ', res.data.user);
+      const { events } = res.data.user.local;
+      dispatch({ type: LOGIN, payload: { events }});
+    })
+  } catch (e) {
+    console.log('error loging in...', e)
+  }
+}
