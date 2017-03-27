@@ -16,6 +16,8 @@ const EventSchema = new Schema({
     type: Array,
     required: false,
   },
+  private: Boolean,
+  required: false
 });
 
 export default mongoose.model('Event', EventSchema);
