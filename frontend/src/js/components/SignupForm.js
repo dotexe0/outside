@@ -18,7 +18,7 @@ import { signup } from '../actions';
     // console.log(e.target.id);
   }
 
-  _getUserProfile = (e) => {
+  _signupUser = (e) => {
     e.preventDefault();
     this.props.signup(this.state.email, this.state.password);
   }
@@ -26,7 +26,7 @@ import { signup } from '../actions';
   render() {
     return (
       <div>
-        <form className="signup-form" onSubmit={this._getUserProfile}>
+        <form className="signup-form" onSubmit={this._signupUser}>
           <div className="form-group">
             <label>Username</label>
             <input onChange={this._handleChange} type="text" className="form-control" name="email" id="email" />
