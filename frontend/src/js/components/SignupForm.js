@@ -25,7 +25,7 @@ import { signup } from '../actions';
 
   render() {
     return (
-      <div>
+      <div className="col-xs-12 col-md-4 col-md-offset-4">
         <form className="signup-form" onSubmit={this._signupUser}>
           <div className="form-group">
             <label>Username</label>

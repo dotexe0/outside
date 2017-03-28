@@ -24,7 +24,9 @@ export default (state=initialState, action) => {
     return {
       ...state,
       user: {
-        events: [...state.user.events, ...action.payload]
+        _id: action.payload._id,
+        email: action.payload.email,
+        events: [...state.user.events, ...action.payload.events]
       }
     }
 

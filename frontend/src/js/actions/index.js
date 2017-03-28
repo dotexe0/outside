@@ -69,10 +69,16 @@ export const login = (email, password) => async dispatch => {
     })
     .then(res => {
       console.log('res: ', res.data.user);
-      const { events } = res.data.user.local;
-      dispatch({ type: LOGIN, payload: { events }});
+      const { _id } = res.data.user;
+      const { events, email } = res.data.user.local;
+      dispatch({ type: LOGIN, payload: { events, email, _id }});
     })
   } catch (e) {
     console.log('error loging in...', e)
   }
+}
+
+export const LOGOUT = 'LOGOUT';
+export const logout = () => async dispatch => {
+
 }

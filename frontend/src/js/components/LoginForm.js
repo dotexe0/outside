@@ -25,7 +25,7 @@ import { login } from '../actions';
 
   render() {
     return (
-      <div>
+      <div className="col-xs-12 col-md-4 col-md-offset-4">
         <form className="login-form" onSubmit={this._loginUser}>
           <div className="form-group">
             <label>Username</label>
