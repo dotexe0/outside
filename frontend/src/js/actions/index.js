@@ -1,9 +1,18 @@
 import axios from 'axios';
 
 export const CREATE_EVENT = 'CREATE_EVENT';
-export const createEvent = event => async dispatch => {
+export const createEvent = (_id, event) => async dispatch => {
+  console.log('_id: ', _id);
+  console.log('event: ', event);
   try {
-    const res = await axios.post('/api/events', event);
+    const res = await axios({
+      method: 'put',
+      url: '/api/user/events',
+      data: {
+        event: event,
+        _id: _id
+      }
+    });
     console.log("res", res);
     dispatch({ type: CREATE_EVENT, payload: res.data });
   } catch (e) {
@@ -22,7 +31,6 @@ export const getAllEvents = () => async dispatch => {
     console.log("error getting all..", e)
   }
 };
-
 
 export const DELETE_EVENT = 'DELETE_EVENT';
 export const deleteEvent = (id) => async dispatch => {
