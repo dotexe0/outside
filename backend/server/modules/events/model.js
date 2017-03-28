@@ -16,7 +16,7 @@ const EventSchema = new Schema({
     type: Array,
     required: false,
   },
-  private: Boolean,
+  isPrivate: Boolean,
   required: false
 });
 
