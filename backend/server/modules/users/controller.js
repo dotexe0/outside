@@ -1,12 +1,13 @@
 // import passport from 'passport';
 // import './passport';
 import User from './model';
+import Event from '../events/model';
 
   // ======================
   // LOCAL LOGIN
   // ======================
 export const userLogin = (req, res, next) => {
-  console.log('req, body:', req.body);
+  console.log('login credentials:', req.body);
   res.send({ user: req.user });
   return next();
 };
@@ -36,53 +37,36 @@ export const userSignup = async (req, res) => {
       }
 };
 
+export const addEventToUser = async (req, res) => {
+  const { _id } = req.body;
+  const { time, ...args } = req.body.event;
+  console.log('event: ', req.body.event);
+  console.log('_id: ', req.body._id);
 
 
+  const newEvent = new Event({ ...args, time: Date(time) });
+  console.log('newEvent: ', newEvent);
+  try {
+    User.findOneAndUpdate({ _id: _id }, { $push: { events: newEvent } }).exec((err, user) => {
+    console.log('user: ', user);
+    if (err) {
+      console.log('Error updating: ', err);
+    }
+      res.status(200).json({ updatedUser: user });
+    });
+  } catch (e) {
+    throw Error(e);
+  }
+};
 
+// const { time, eventName, description, invited, isPrivate } = req.body.event;
+//   console.log('event: ', req.body.event);
+//   console.log('email: ', req.body.email);
 
-  // console.log('body, ', req.body);
-  //   // const { email, password } = req.body;
-
-  //   const newUser = new User({ local: req.body });
-  //   console.log('newUser: ', newUser);
-  //   try {
-  //   res.status(200).json({ user: await newUser.save() });
-  // } catch (error) {
-  //   console.log('User signup error: ', error);
-  //   return res.status(500);
-  // }
-// };
-
-
- // ======================
-  // LOCAL SIGNUP
-  // ======================
-  // we are using named strategies since we have one for login and one for signup.
-  // by default, if there was no name, it would just be called 'local'
-
-  // passport.use('local-signup', new LocalStrategy({
-  //   //by default, local strategy uses username and password -- we override username with email.
-  //   emailField: 'email',
-  //   passwordField: 'password',
-  //   passReqToCallback: true // allows us to pass entire request to callback,
-  // },
-  // async (req, email, password, done) => {
-  //   //asynch User.findOne wont fire unless data is sent back
-  //     try {
-  //       const user = await User.findOne({ 'local.email': email });
-  //       if (user) {
-  //         return done(null, false, {'message': 'That email account already exists.'});
-  //       }
-
-  //       try {
-  //         const newUser = await User.create({ email, password });
-
-  //         return done(null, newUser);
-  //       } catch (e) {
-  //         throw new Error(e);
-  //       }
-
-  //     } catch (e) {
-  //       throw new Error(e);
-  //     }
-  // ));
+  // const newEvent = new Event({
+  //   eventName: eventName,
+  //   time: Date(time),
+  //   description: description,
+  //   invited: invited,
+  //   isPrivate: false
+  // });
