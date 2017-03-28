@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 // import axios from 'axios';
 import {connect} from 'react-redux';
 import { createEvent } from '../actions';
+import { Checkbox } from 'react-bootstrap';
 // import Moment from 'moment';
 
 // console.log(Moment(new Date()).format('MMMM Do YYYY, h:mm:ss a'))
@@ -16,7 +17,7 @@ class FormComponent extends Component {
   }
 
   _createEvent = async (e) => {
-    this.props.createEvent(this.state);
+    this.props.createEvent(this.props.user._id, this.state);
     this.setState({
       eventName: '',
       time: '',
@@ -64,6 +65,9 @@ class FormComponent extends Component {
           <div className="col-4">
             <input onChange={ this._invited } className="form-control" type="email" required="true" placeholder="friend@email.com, friend2@email.com" id="email-input"></input>
           </div>
+          <Checkbox defaultChecked readOnly>
+          Make Public
+          </Checkbox>
         </div>
         <button type="button" className="btn btn-primary" onClick={this._createEvent}>Create</button>
       </form>

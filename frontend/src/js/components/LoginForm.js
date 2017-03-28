@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { browserHistory } from 'react-router';
 import { login } from '../actions';
 
  class LoginForm extends Component {
@@ -21,11 +22,12 @@ import { login } from '../actions';
   _loginUser = (e) => {
     e.preventDefault();
     this.props.login(this.state.email, this.state.password);
+    browserHistory.push('/');
   }
 
   render() {
     return (
-      <div>
+      <div className="col-xs-12 col-md-4 col-md-offset-4">
         <form className="login-form" onSubmit={this._loginUser}>
           <div className="form-group">
             <label>Username</label>

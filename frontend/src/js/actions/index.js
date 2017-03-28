@@ -1,9 +1,18 @@
 import axios from 'axios';
 
 export const CREATE_EVENT = 'CREATE_EVENT';
-export const createEvent = event => async dispatch => {
+export const createEvent = (_id, event) => async dispatch => {
+  console.log('_id: ', _id);
+  console.log('event: ', event);
   try {
-    const res = await axios.post('/api/events', event);
+    const res = await axios({
+      method: 'put',
+      url: '/api/user/events',
+      data: {
+        event: event,
+        _id: _id
+      }
+    });
     console.log("res", res);
     dispatch({ type: CREATE_EVENT, payload: res.data });
   } catch (e) {
@@ -22,7 +31,6 @@ export const getAllEvents = () => async dispatch => {
     console.log("error getting all..", e)
   }
 };
-
 
 export const DELETE_EVENT = 'DELETE_EVENT';
 export const deleteEvent = (id) => async dispatch => {
@@ -48,8 +56,9 @@ export const signup = (email, password) => async dispatch => {
     })
     .then(res => {
       console.log('res: ', res.data.user);
-      const { events } = res.data.user.local;
-      dispatch({ type: SIGNUP, payload: { events }});
+      const { _id } = res.data.user;
+      const { events, email } = res.data.user.local;
+      dispatch({ type: SIGNUP, payload: { events, email, _id }});
     })
   } catch (e) {
     console.log('error signing up...', e)
@@ -69,10 +78,16 @@ export const login = (email, password) => async dispatch => {
     })
     .then(res => {
       console.log('res: ', res.data.user);
-      const { events } = res.data.user.local;
-      dispatch({ type: LOGIN, payload: { events }});
+      const { _id } = res.data.user;
+      const { events, email } = res.data.user.local;
+      dispatch({ type: LOGIN, payload: { events, email, _id }});
     })
   } catch (e) {
     console.log('error loging in...', e)
   }
+}
+
+export const LOGOUT = 'LOGOUT';
+export const logout = () => async dispatch => {
+
 }
