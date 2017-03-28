@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { browserHistory } from 'react-router';
 import { signup } from '../actions';
 
  class SignupForm extends Component {
@@ -21,6 +22,7 @@ import { signup } from '../actions';
   _signupUser = (e) => {
     e.preventDefault();
     this.props.signup(this.state.email, this.state.password);
+    browserHistory.push('/');
   }
 
   render() {

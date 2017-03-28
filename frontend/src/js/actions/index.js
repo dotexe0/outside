@@ -48,8 +48,9 @@ export const signup = (email, password) => async dispatch => {
     })
     .then(res => {
       console.log('res: ', res.data.user);
-      const { events } = res.data.user.local;
-      dispatch({ type: SIGNUP, payload: { events }});
+      const { _id } = res.data.user;
+      const { events, email } = res.data.user.local;
+      dispatch({ type: SIGNUP, payload: { events, email, _id }});
     })
   } catch (e) {
     console.log('error signing up...', e)
