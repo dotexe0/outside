@@ -13,11 +13,9 @@ const EventSchema = new Schema({
     required: true,
   },
   invited: {
-    type: Array,
-    required: false,
+    type: Array
   },
-  isPrivate: Boolean,
-  required: false
+  isPrivate: Boolean
 });
 
 export default mongoose.model('Event', EventSchema);

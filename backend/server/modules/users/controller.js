@@ -38,35 +38,21 @@ export const userSignup = async (req, res) => {
 };
 
 export const addEventToUser = async (req, res) => {
-  const { _id } = req.body;
-  const { time, ...args } = req.body.event;
-  console.log('event: ', req.body.event);
-  console.log('_id: ', req.body._id);
-
-
-  const newEvent = new Event({ ...args, time: Date(time) });
-  console.log('newEvent: ', newEvent);
+  const { userId, event } = req.body;
+  console.log('event: ', event);
   try {
-    User.findOneAndUpdate({ _id: _id }, { $push: { events: newEvent } }).exec((err, user) => {
-    console.log('user: ', user);
-    if (err) {
-      console.log('Error updating: ', err);
-    }
-      res.status(200).json({ updatedUser: user });
-    });
+    await User.addEvent(userId, event);
+      return res.status(200).json({ event });
   } catch (e) {
-    throw Error(e);
+    return res.status(400).json({ error: e });
   }
 };
 
-// const { time, eventName, description, invited, isPrivate } = req.body.event;
-//   console.log('event: ', req.body.event);
-//   console.log('email: ', req.body.email);
-
-  // const newEvent = new Event({
-  //   eventName: eventName,
-  //   time: Date(time),
-  //   description: description,
-  //   invited: invited,
-  //   isPrivate: false
-  // });
+export const getAllUserEvents = async (req, res) => {
+  try {
+    return res.status(200).json({ events: await User.findById('58db0f02dc53eb320123c89f').populate('events') });
+  } catch (error) {
+    console.log('Get all events error', error);
+    return res.status(404).json({ error: true });
+  }
+};
