@@ -49,6 +49,7 @@ export const addEventToUser = async (req, res) => {
 };
 
 export const getAllUserEvents = async (req, res) => {
+  console.log('req.body-delete: ', req.body);
   try {
     return res.status(200).json({ events: await User.findById('58db0f02dc53eb320123c89f').populate('events') });
   } catch (error) {
