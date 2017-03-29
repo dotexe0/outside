@@ -41,10 +41,13 @@ export default (state=initialState, action) => {
     }
 
     case CREATE_EVENT:
-      console.log("create event", action.payload);
+      console.log("create event", action.payload.event);
       return {
         ...state,
-        events: [...state.user.events, ...action.payload.event]
+        user: {
+          ...state.user,
+          events: [...state.user.events, action.payload.event]
+        }
       }
 
     case GET_ALL_USER_EVENTS:
@@ -52,7 +55,8 @@ export default (state=initialState, action) => {
       return {
         ...state,
         user: {
-          events: [...action.payload.events.events]
+          ...state.user,
+          events: [...state.user.events, ...action.payload.events.events]
         }
       }
 
