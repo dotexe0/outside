@@ -5,8 +5,11 @@ const UserSchema = new Schema({
   local: {
    email: String,
    password: String,
-   events: []
-  }
+  },
+  events: [{
+     type: Schema.Types.ObjectId,
+     ref: 'Event'
+   }]
 });
 
 UserSchema.pre('save', function (next) {
@@ -33,5 +36,15 @@ UserSchema.methods.comparePassword = function (canditePassword, cb) {
   });
 };
 
+UserSchema.statics.addEvent = async function (id, args) {
+  const Event = mongoose.model('Event');
+  const event = await new Event({ ...args });
+  console.log('Event', event._id);
+  await this.findByIdAndUpdate(id, { $push: { events: event._id } }, { new: true });
+
+  return {
+    event: await event.save()
+  };
+};
 
 export default mongoose.model('User', UserSchema);
