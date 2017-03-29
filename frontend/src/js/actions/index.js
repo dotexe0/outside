@@ -1,34 +1,39 @@
 import axios from 'axios';
 
 export const CREATE_EVENT = 'CREATE_EVENT';
-export const createEvent = (_id, event) => async dispatch => {
-  console.log('_id: ', _id);
+export const createEvent = (userId, event) => async dispatch => {
+  console.log('userId: ', userId);
   console.log('event: ', event);
   try {
-    const res = await axios({
-      method: 'put',
-      url: '/api/user/events',
-      data: {
-        event: event,
-        _id: _id
-      }
-    });
-    console.log("res", res);
+    const res = await axios.post('/api/user/event', {event, userId});
+    console.log("returned res.data by backend: ", res.data);
     dispatch({ type: CREATE_EVENT, payload: res.data });
   } catch (e) {
     console.log("error, ", e);
   }
 };
 
-export const GET_ALL_EVENTS = 'GET_ALL_EVENTS';
-export const getAllEvents = () => async dispatch => {
+export const GET_ALL_USER_EVENTS = 'GET_ALL_USER_EVENTS';
+export const getAllUserEvents = () => async dispatch => {
   try {
-    const res = await axios.get('/api/events');
+    const res = await axios.get('/api/user/events');
     console.log("res", res);
-      dispatch({ type: GET_ALL_EVENTS, payload: res.data });
+      dispatch({ type: GET_ALL_USER_EVENTS, payload: res.data });
     // console.log("events", events);
   } catch (e) {
-    console.log("error getting all..", e)
+    console.log("error getting all..", e);
+  }
+};
+
+export const GET_ALL_PUBLIC_EVENTS = 'GET_ALL_PUBLIC_EVENTS';
+export const getAllPublicEvents = () => async dispatch => {
+  try {
+    const res = await axios.get('/api/public/events');
+    console.log("res", res);
+      dispatch({ type: GET_ALL_PUBLIC_EVENTS, payload: res.data });
+    // console.log("events", events);
+  } catch (e) {
+    console.log("error getting all..", e);
   }
 };
 

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import  NavBar from './NavBar';
 
 export default class App extends Component {
-  state = {  }
+  // state = {  }
   render() {
     return (
       <div>

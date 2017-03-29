@@ -29,6 +29,7 @@ import { login } from '../actions';
     return (
       <div className="col-xs-12 col-md-4 col-md-offset-4">
         <form className="login-form" onSubmit={this._loginUser}>
+          <h1>Login</h1>
           <div className="form-group">
             <label>Username</label>
             <input onChange={this._handleChange} type="text" className="form-control" name="email" id="email" />
@@ -40,7 +41,7 @@ import { login } from '../actions';
           <button type="submit" className="btn btn-primary btn-lg">Login</button>
         </form>
       </div>
-    )
+    );
   }
 }
 
