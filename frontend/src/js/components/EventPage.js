@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { getAllEvents, deleteEvent } from '../actions';
+import { getAllPublicEvents } from '../actions';
 import Event from './Event';
 
 class EventPage extends Component {
@@ -8,7 +8,7 @@ class EventPage extends Component {
 
   async componentDidMount() {
     this.setState({ loading: true })
-    await this.props.getAllEvents();
+    await this.props.getAllPublicEvents();
     this.setState({ loading: false })
   }
 
@@ -17,9 +17,14 @@ class EventPage extends Component {
     if (this.state.loading) {
       return <h1>Loading...</h1>
     }
+    if (!this.props.publicEvents) {
+      return (
+        <h2>No Events created yet..</h2>
+      )
+    }
     return (
-      <div>{this.props.events.map((event, i) => (
-        <Event key={i} {...event} deleteEvent={this.props.deleteEvent}/>
+      <div>{this.props.publicEvents.map((event, i) => (
+        <Event key={i} {...event} />
       ))}</div>
     )
   }
@@ -29,7 +34,7 @@ class EventPage extends Component {
 
 export default connect(
   state => ({
-    events: state.events
+    publicEvents: state.publicEvents
    }),
-  {getAllEvents, deleteEvent}
+  {getAllPublicEvents}
 )(EventPage);
