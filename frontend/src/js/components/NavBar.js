@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router';
 import {connect} from 'react-redux';
-import { getAllEvents } from '../actions';
+import { getAllEvents, logout } from '../actions';
+import { browserHistory } from 'react-router';
 
 import '../../css/NavBar.css';
 
@@ -12,7 +13,12 @@ class NavBar extends Component {
     console.log('getting...')
   }
 
+_logUserOut = () => {
+  this.props.logout();
+  browserHistory.push('/');
+}
   render() {
+    console.log('this.props: ', this.props);
       return (
         <nav className="navbar navbar-default">
         <div className="container-fluid">
@@ -24,6 +30,7 @@ class NavBar extends Component {
                 <li><Link to="/events">Public Events<span></span></Link></li>
                 <li><Link to="/myEvents">My Events<span></span></Link></li>
                 <li><Link to="/about">About</Link></li>
+                <li className="pull-right" onClick={this._logUserOut}><Link >Logout</Link><span></span></li>
                 <li className="pull-right"><Link to="/login">Login<span></span></Link></li>
                 <li className="pull-right"><Link to="/signup">Signup<span></span></Link></li>
               </ul>
@@ -38,5 +45,4 @@ const mapStateToProps = state => ({
   ...state
 });
 
-// export default connect(mapStateToProps, { searchGame })(SearchBar);
-export default connect(mapStateToProps, { getAllEvents })(NavBar);
+export default connect(mapStateToProps, { getAllEvents, logout })(NavBar);

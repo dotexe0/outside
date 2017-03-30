@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "animate-components": "^0.3.8",
     "axios": "^0.15.3",
     "babel-polyfill": "^6.23.0",
     "babel-preset-es2015": "^6.24.0",

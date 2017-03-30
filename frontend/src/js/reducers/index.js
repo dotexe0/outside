@@ -1,4 +1,4 @@
-import { SIGNUP, LOGIN, CREATE_EVENT, GET_ALL_USER_EVENTS, DELETE_EVENT, GET_ALL_PUBLIC_EVENTS } from '../actions';
+import { SIGNUP, LOGIN, LOGOUT, CREATE_EVENT, GET_ALL_USER_EVENTS, DELETE_EVENT, GET_ALL_PUBLIC_EVENTS } from '../actions';
 
 const initialState = {
   loading: false,
@@ -39,7 +39,11 @@ export default (state=initialState, action) => {
         events: [...action.payload.events]
       }
     }
-
+    case LOGOUT:
+        // console.log('signup: ', action.payload);
+        return {
+          initialState
+        }
     case CREATE_EVENT:
       console.log("create event", action.payload.event);
       if (!state.user.events) {
@@ -60,8 +64,8 @@ export default (state=initialState, action) => {
       }
 
     case GET_ALL_USER_EVENTS:
-      console.log("getting all user events: ", action.payload.events);
-      if (!action.payload.events) {
+      console.log("getting all user events: ", action.payload.events.events);
+      if (action.payload.events.events === undefined) {
         return {
           ...state,
           user: {
@@ -74,7 +78,7 @@ export default (state=initialState, action) => {
         ...state,
         user: {
           ...state.user,
-          events: [...state.user.events, ...action.payload.events]
+          events: [...action.payload.events.events]
         }
       }
 

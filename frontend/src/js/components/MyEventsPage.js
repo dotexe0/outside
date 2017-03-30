@@ -14,18 +14,19 @@ class MyEventsPage extends Component {
     this.setState({ loading: false })
   }
    _deleteEvent = () => {
+     console.log(this.props.user.events);
     this.props.deleteEvent(this.props.user.events._id);
   }
 
   render() {
-    console.log('props: ', this.props.user.events);
+    console.log('props: ', this.props);
 
     if (this.state.loading) {
       return <h1>Loading...</h1>
     }
-    if (this.props.user.events.length === 0) {
+    if (!this.props.user.events || this.props.user.events.length === 0) {
       return (
-        <h2>No Events created yet..</h2>
+        <h2>No events created yet.</h2>
       )
     }
     return (
