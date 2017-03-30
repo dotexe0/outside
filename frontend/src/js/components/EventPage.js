@@ -17,7 +17,7 @@ class EventPage extends Component {
     if (this.state.loading) {
       return <h1>Loading...</h1>
     }
-    if (!this.props.publicEvents) {
+    if (this.props.publicEvents.length === 0) {
       return (
         <h2>No Events created yet..</h2>
       )

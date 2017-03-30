@@ -13,7 +13,7 @@ class FormComponent extends Component {
     eventName: '',
     time: '',
     description: '',
-    invited: []
+    invited: [],
   }
 
   _createEvent = async (e) => {

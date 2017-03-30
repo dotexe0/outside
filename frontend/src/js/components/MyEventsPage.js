@@ -9,22 +9,24 @@ class MyEventsPage extends Component {
 
   async componentDidMount() {
     this.setState({ loading: true })
-    await this.props.getAllUserEvents();
+    console.log('props userID', this.props.user._id);
+    await this.props.getAllUserEvents(this.props.user._id);
     this.setState({ loading: false })
   }
    _deleteEvent = () => {
+     console.log(this.props.user.events);
     this.props.deleteEvent(this.props.user.events._id);
   }
 
   render() {
-    console.log('props: ', this.props.user.events);
+    console.log('props: ', this.props);
 
     if (this.state.loading) {
       return <h1>Loading...</h1>
     }
-    if (!this.props.user.events) {
+    if (!this.props.user.events || this.props.user.events.length === 0) {
       return (
-        <h2>No Events created yet..</h2>
+        <h2>No events created yet.</h2>
       )
     }
     return (
@@ -43,9 +45,7 @@ class MyEventsPage extends Component {
 
 export default connect(
   state => ({
-    user: {
-    events: state.user.events
-    }
+    ...state
    }),
   {getAllUserEvents, deleteEvent}
 )(MyEventsPage);
