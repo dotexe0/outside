@@ -14,10 +14,11 @@ export const createEvent = (userId, event) => async dispatch => {
 };
 
 export const GET_ALL_USER_EVENTS = 'GET_ALL_USER_EVENTS';
-export const getAllUserEvents = () => async dispatch => {
+export const getAllUserEvents = (userId) => async dispatch => {
+  console.log("get all users id", userId);
   try {
-    const res = await axios.get('/api/user/events');
-    console.log("res", res);
+    const res = await axios.get('/api/user/events', { _id: userId });
+    console.log("res from backend", res);
       dispatch({ type: GET_ALL_USER_EVENTS, payload: res.data });
     // console.log("events", events);
   } catch (e) {
