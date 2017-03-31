@@ -17,22 +17,6 @@ class Home extends Component {
   }
 
   render() {
-
-    const createEventForm = (
-      <div className="text-center">
-        <div className="row">
-          <div className="col-xs-12 col-md-4 col-md-offset-4">
-            <div className="card">
-              <div className="card-block">
-                <h3 className="card-title">Create a new Event</h3>
-                <FormComponent />
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    );
-
     return (
       <HomeWrapper>
       <div className="container">
@@ -50,7 +34,6 @@ class Home extends Component {
             <li><h4>Invite your friends, colleagues, and enemies all within the same app.</h4></li>
           </ul>
         </div>
-        {createEventForm}
 
     </div>
         {this.props.children}

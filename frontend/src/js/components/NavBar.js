@@ -28,10 +28,15 @@ _logUserOut = () => {
           </div>
             <div className="collapse navbar-collapse" id="bs-navbar-collapse-1">
               <ul className="nav navbar-nav">
+              {this.props.user.user.isAuthenticated ? (
+                <li><Link to="/createEvent">Create Event<span></span></Link></li>
+              ) : (
+                null
+              )}
                 <li><Link to="/events">Public Events<span></span></Link></li>
                 <li><Link to="/myEvents">My Events<span></span></Link></li>
                 <li><Link to="/about">About</Link></li>
-                {this.props.user.user.isAuthenticate ? (
+                {this.props.user.user.isAuthenticated ? (
                   <li className="pull-right" onClick={this._logUserOut}><Link >Logout</Link><span></span></li>
                 ) : ([
                   <li key={1} className="pull-right"><Link to="/login">Login<span></span></Link></li>,

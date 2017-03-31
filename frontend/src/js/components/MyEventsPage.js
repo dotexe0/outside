@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router';
 import { getAllUserEvents, deleteEvent } from '../actions';
 import Event from './Event';
-import { Button } from 'react-bootstrap';
+import { Button, Panel, ListGroupItem } from 'react-bootstrap';
 
 class MyEventsPage extends Component {
   state = { loading: false }
@@ -20,16 +20,33 @@ class MyEventsPage extends Component {
 
   render() {
     console.log('props: ', this.props);
-
+    const noAccount = 'Need an account?';
+    const notLoggedIn = 'You are not logged in.';
     if (this.state.loading) {
       return <h1 className="col-xs-12 col-md-4 col-md-offset-4">Loading...</h1>
     }
     if (!this.props.user.user.events || this.props.user.user.events.length === 0) {
       return (
         <div className="col-xs-12 col-md-4 col-md-offset-4">
-          <h2>No events created yet.</h2>
-          <h3>Are you logged in?</h3><br />
-          <Link to='/login'><Button bsStyle="success">Login</Button></Link>
+          <ListGroupItem header="No events created yet.">
+          </ListGroupItem>
+
+          {this.props.user.user.isAuthenticate ? (
+          <Panel header="No events created yet." bsStyle="primary">
+            <Link to='/createEvent'><Button bsStyle="success">Create Event</Button></Link>
+          </Panel>
+          ) : (
+          <span>
+            <Panel header={notLoggedIn} bsStyle="primary">
+              <Link to='/login'><Button bsStyle="success">Login</Button></Link>
+            </Panel>
+            <Panel header={noAccount} bsStyle="primary">
+              <Link to='/signup'><Button bsStyle="success">Signup</Button></Link>
+            </Panel>
+          </span>
+          )}
+
+
 
         </div>
       )

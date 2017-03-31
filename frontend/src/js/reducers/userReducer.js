@@ -5,7 +5,7 @@ const initialState = {
   publicEvents: [],
   user: {
     events: [],
-    isAuthenticate: false
+    isAuthenticated: false
   }
 }
 
@@ -17,7 +17,7 @@ export default (state=initialState, action) => {
       ...state,
       user: {
         ...action.payload,
-        isAuthenticate: true
+        isAuthenticated: true
       }
     }
 
@@ -30,7 +30,7 @@ export default (state=initialState, action) => {
         _id: action.payload._id,
         email: action.payload.email,
         events: action.payload.events || [],
-        isAuthenticate: true
+        isAuthenticated: true
       }
     }
     case LOGOUT:

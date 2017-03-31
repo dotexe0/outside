@@ -10,7 +10,7 @@ import store from './js/store';
 import App from './js/components/App';
 import Home from './js/components/Home';
 import About from './js/components/About';
-// import Explore from './js/components/Explore';
+import FormComponent from './js/components/FormComponent';
 import EventPage from './js/components/EventPage';
 import MyEventsPage from './js/components/MyEventsPage';
 import SignupForm from './js/components/SignupForm';
@@ -33,6 +33,7 @@ const routes = (
         <Route path="/" component={App}>
           <IndexRoute component={Home}/>
           <Route path="/about" component={About} />
+          <Route path="/createEvent" component={FormComponent} />
           <Route path="/events" component={EventPage} />
           <Route path="/myEvents" component={MyEventsPage} />
           <Route path="/signup" component={SignupForm} />
