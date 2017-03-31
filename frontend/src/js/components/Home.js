@@ -1,9 +1,5 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
-
-// import '../../css/Home.css';
-// import SearchBar from './SearchBar';
-import FormComponent from './FormComponent';
 // import { Button } from 'react-bootstrap';
 
   const HomeWrapper = styled.div`
@@ -47,19 +43,3 @@ export default Home;
 
 //Client Token: gAAAAABYyC1JvlxSq5rooQLqAkakeBpJnZHDLX7y-YujFfJPoLXtJ3KF3X1uW9fbIxhT73cxBn8P_T4QqwvPVnLSUhZgF_YjhA_iWtM3ca9yrEILuDefIFU4OigFSR52FVhjfG8nZSSHGWIdIneDCDftwxeu-G35NokGKyWB1bvr3ciAFx3eVso=
 //Client Secret: GRETvJSoiwGSDZBOuIQL_Rc7pbSNzgR3
-
-
-// <div className="col-xs-12 col-md-4 col-md-offset-1">
-//             <div className="card">
-//               <div className="card-block">
-//                 <h3 className="card-title">Find an existing Event</h3>
-//                 <p className="card-text">...</p>
-//                   <div className="form-group row">
-//                     <label htmlFor="search-input" className="col-2 col-form-label">Search</label>
-//                     <div className="col-10">
-//                       <SearchBar />
-//                     </div>
-//                   </div>
-//               </div>
-//             </div>
-//           </div>

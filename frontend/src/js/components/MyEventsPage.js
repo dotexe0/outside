@@ -23,15 +23,15 @@ class MyEventsPage extends Component {
     const noAccount = 'Need an account?';
     const notLoggedIn = 'You are not logged in.';
     if (this.state.loading) {
-      return <h1 className="col-xs-12 col-md-4 col-md-offset-4">Loading...</h1>
+      return <h1 className="col-xs-6 col-xs-offset-2 col-md-4 col-md-offset-4">Loading...</h1>
     }
     if (!this.props.user.user.events || this.props.user.user.events.length === 0) {
       return (
-        <div className="col-xs-12 col-md-4 col-md-offset-4">
+        <div className="col-xs-6 col-xs-offset-2 col-md-4 col-md-offset-4">
           <ListGroupItem header="No events created yet.">
           </ListGroupItem>
 
-          {this.props.user.user.isAuthenticate ? (
+          {this.props.user.user.isAuthenticated ? (
           <Panel header="No events created yet." bsStyle="primary">
             <Link to='/createEvent'><Button bsStyle="success">Create Event</Button></Link>
           </Panel>
@@ -45,18 +45,15 @@ class MyEventsPage extends Component {
             </Panel>
           </span>
           )}
-
-
-
         </div>
       )
     }
     return (
-      <div>{this.props.user.user.events.map((event, i) => (
-        <div className="col-xs-12 col-md-4 col-md-offset-1" key={i}>
+      <div className="">
+        {this.props.user.user.events.map((event, i) => (
+        <div key={i}>
         {console.log('event: ', event)}
         <Event key={i} {...event} />
-        <Button bsStyle="danger" onClick={() => this._deleteEvent(event._id)}>Delete</Button>
         </div>
       ))}
       </div>

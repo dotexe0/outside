@@ -14,7 +14,7 @@ export const createEvent = (userId, event) => async dispatch => {
     toastr.success('Successfully', 'Event created!');
     browserHistory.push('/myEvents');
   } catch (e) {
-    console.log("error, ", e);
+    toastr.warning(`Error creating event!`, 'Fill out entire form.');
   }
 };
 
