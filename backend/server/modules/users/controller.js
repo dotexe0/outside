@@ -1,4 +1,4 @@
-// import passport from 'passport';
+import passport from 'passport';
 // import './passport';
 import User from './model';
 import Event from '../events/model';
@@ -10,6 +10,14 @@ export const userLogin = (req, res, next) => {
   console.log('login credentials:', req.body);
   res.send({ user: req.user });
   return next();
+};
+  // ======================
+  // LOGOUT
+  // ======================
+export const userLogout = (req, res) => {
+  console.log('LOGOUT:', req.body);
+  req.logout();
+  res.redirect('/');
 };
 
   // ======================
@@ -49,9 +57,16 @@ export const addEventToUser = async (req, res) => {
 };
 
 export const getAllUserEvents = async (req, res) => {
-  console.log('req.body-delete: ', req.body);
+  console.log('req.body-getAllUserEvents: ', req.body);
+  const { userId } = req.body;
+
   try {
-    return res.status(200).json({ events: await User.findById('58db0f02dc53eb320123c89f').populate('events') });
+    const allUserEvents = await User.findById(userId).populate('events');
+    console.log(allUserEvents);
+    if (allUserEvents === null) {
+      return res.status(200).json({ events: [] });
+    }
+    return res.status(200).json({ events: allUserEvents });
   } catch (error) {
     console.log('Get all events error', error);
     return res.status(404).json({ error: true });

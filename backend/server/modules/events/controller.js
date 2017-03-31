@@ -1,4 +1,5 @@
 import Event from './model';
+import User from '../users/model';
 
 export const createEvent = async (req, res) => {
   const { time, ...args } = req.body;
@@ -28,8 +29,10 @@ export const getAllPublicEvents = async (req, res) => {
 };
 
 export const deleteEvent = async (req, res) => {
+  console.log('delete user: ', req.user);
   try {
     await Event.findOneAndRemove(req.params.id);
+    await User.findByIdAndUpdate(req.user._id, { $pull: { events: req.params.id } });
     return res.sendStatus(200);
   } catch (error) {
     console.log('Get all events error', error);

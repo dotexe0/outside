@@ -41,7 +41,6 @@ UserSchema.statics.addEvent = async function (id, args) {
   const event = await new Event({ ...args });
   console.log('Event', event._id);
   await this.findByIdAndUpdate(id, { $push: { events: event._id } }, { new: true });
-
   return {
     event: await event.save()
   };
