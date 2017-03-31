@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router';
 import { getAllUserEvents, deleteEvent } from '../actions';
 import Event from './Event';
 import { Button } from 'react-bootstrap';
@@ -9,31 +10,36 @@ class MyEventsPage extends Component {
 
   async componentDidMount() {
     this.setState({ loading: true })
-    console.log('props userID', this.props.user._id);
-    await this.props.getAllUserEvents(this.props.user._id);
+    await this.props.getAllUserEvents(this.props.user.user._id);
     this.setState({ loading: false })
   }
-   _deleteEvent = () => {
-     console.log(this.props.user.events);
-    this.props.deleteEvent(this.props.user.events._id);
+   _deleteEvent = (id) => {
+     console.log('delete ID: ', id);
+    this.props.deleteEvent(id);
   }
 
   render() {
     console.log('props: ', this.props);
 
     if (this.state.loading) {
-      return <h1>Loading...</h1>
+      return <h1 className="col-xs-12 col-md-4 col-md-offset-4">Loading...</h1>
     }
-    if (!this.props.user.events || this.props.user.events.length === 0) {
+    if (!this.props.user.user.events || this.props.user.user.events.length === 0) {
       return (
-        <h2>No events created yet.</h2>
+        <div className="col-xs-12 col-md-4 col-md-offset-4">
+          <h2>No events created yet.</h2>
+          <h3>Are you logged in?</h3><br />
+          <Link to='/login'><Button bsStyle="success">Login</Button></Link>
+
+        </div>
       )
     }
     return (
-      <div>{this.props.user.events.map((event, i) => (
+      <div>{this.props.user.user.events.map((event, i) => (
         <div className="col-xs-12 col-md-4 col-md-offset-1" key={i}>
-        <Event key={i} {...event} deleteEvent={this._deleteEvent}/>
-        <Button bsStyle="danger" onClick={this._deleteEvent}>Delete</Button>
+        {console.log('event: ', event)}
+        <Event key={i} {...event} />
+        <Button bsStyle="danger" onClick={() => this._deleteEvent(event._id)}>Delete</Button>
         </div>
       ))}
       </div>

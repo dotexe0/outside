@@ -17,7 +17,7 @@ class FormComponent extends Component {
   }
 
   _createEvent = async (e) => {
-    this.props.createEvent(this.props.user._id, this.state);
+    this.props.createEvent(this.props.user.user._id, this.state);
     this.setState({
       eventName: '',
       time: '',
@@ -39,7 +39,7 @@ class FormComponent extends Component {
 
   render() {
     return (
-      <form>
+      <form >
         <div className="form-group row">
           <label htmlFor="text-input" className="col-2 col-form-label">Event Name: </label>
           <div className="col-4">

@@ -1,4 +1,7 @@
 import axios from 'axios';
+import { browserHistory } from 'react-router';
+import {toastr} from 'react-redux-toastr';
+
 
 export const CREATE_EVENT = 'CREATE_EVENT';
 export const createEvent = (userId, event) => async dispatch => {
@@ -8,6 +11,8 @@ export const createEvent = (userId, event) => async dispatch => {
     const res = await axios.post('/api/user/event', {event, userId});
     console.log("returned res.data by backend: ", res.data);
     dispatch({ type: CREATE_EVENT, payload: res.data });
+    toastr.success('Successfully', 'Event created!');
+    browserHistory.push('/myEvents');
   } catch (e) {
     console.log("error, ", e);
   }
@@ -44,6 +49,8 @@ export const deleteEvent = (id) => async dispatch => {
   try {
     await axios.delete(`/api/events/${id}`);
     dispatch({ type: DELETE_EVENT, payload: id });
+    toastr.error('Deleted', 'Event deleted!');
+
     // console.log("events", events);
   } catch (e) {
     console.log("error getting all..", e)
@@ -91,7 +98,7 @@ export const login = (email, password) => async dispatch => {
 export const LOGOUT = 'LOGOUT';
 export const logout = () => async dispatch => {
   try {
-    await axios.get('/api/logout/');
+    await axios.get('/api/logout');
     dispatch({ type: LOGOUT });
   } catch (e) {
     throw Error(e);

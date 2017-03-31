@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import styled from 'styled-components';
 
 // import '../../css/Home.css';
-import SearchBar from './SearchBar';
+// import SearchBar from './SearchBar';
 import FormComponent from './FormComponent';
 // import { Button } from 'react-bootstrap';
 
@@ -17,6 +17,22 @@ class Home extends Component {
   }
 
   render() {
+
+    const createEventForm = (
+      <div className="text-center">
+        <div className="row">
+          <div className="col-xs-12 col-md-4 col-md-offset-4">
+            <div className="card">
+              <div className="card-block">
+                <h3 className="card-title">Create a new Event</h3>
+                <FormComponent />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+
     return (
       <HomeWrapper>
       <div className="container">
@@ -34,37 +50,8 @@ class Home extends Component {
             <li><h4>Invite your friends, colleagues, and enemies all within the same app.</h4></li>
           </ul>
         </div>
+        {createEventForm}
 
-      <div className="text-center">
-        <div className="row">
-
-          <div className="col-xs-12 col-md-4 col-md-offset-1">
-            <div className="card">
-              <div className="card-block">
-                <h3 className="card-title">Create a new Event</h3>
-                <p className="card-text">...</p>
-                <FormComponent />
-              </div>
-            </div>
-          </div>
-
-          <div className="col-xs-12 col-md-4 col-md-offset-1">
-            <div className="card">
-              <div className="card-block">
-                <h3 className="card-title">Find an existing Event</h3>
-                <p className="card-text">...</p>
-                  <div className="form-group row">
-                    <label htmlFor="search-input" className="col-2 col-form-label">Search</label>
-                    <div className="col-10">
-                      <SearchBar />
-                    </div>
-                  </div>
-              </div>
-            </div>
-          </div>
-
-        </div>
-      </div>
     </div>
         {this.props.children}
       </HomeWrapper>
@@ -77,3 +64,19 @@ export default Home;
 
 //Client Token: gAAAAABYyC1JvlxSq5rooQLqAkakeBpJnZHDLX7y-YujFfJPoLXtJ3KF3X1uW9fbIxhT73cxBn8P_T4QqwvPVnLSUhZgF_YjhA_iWtM3ca9yrEILuDefIFU4OigFSR52FVhjfG8nZSSHGWIdIneDCDftwxeu-G35NokGKyWB1bvr3ciAFx3eVso=
 //Client Secret: GRETvJSoiwGSDZBOuIQL_Rc7pbSNzgR3
+
+
+// <div className="col-xs-12 col-md-4 col-md-offset-1">
+//             <div className="card">
+//               <div className="card-block">
+//                 <h3 className="card-title">Find an existing Event</h3>
+//                 <p className="card-text">...</p>
+//                   <div className="form-group row">
+//                     <label htmlFor="search-input" className="col-2 col-form-label">Search</label>
+//                     <div className="col-10">
+//                       <SearchBar />
+//                     </div>
+//                   </div>
+//               </div>
+//             </div>
+//           </div>

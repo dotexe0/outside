@@ -3,7 +3,8 @@ import moment from 'moment';
 
 export default class Event extends Component {
   render() {
-    const {description, eventName, invited, time, _id } = this.props;
+    const {description, eventName, invited, time } = this.props;
+    console.log('Event Comp Props: ', this.props);
     return (
       <div className="Event">
         <strong>Event: {eventName}</strong><br />

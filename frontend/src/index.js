@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Router, Route, browserHistory, IndexRoute } from 'react-router';
 import { Provider } from 'react-redux';
+import ReduxToastr from 'react-redux-toastr'
 import store from './js/store';
 
 // import NavBar from './js/components/NavBar';
@@ -18,16 +19,27 @@ import './css/index.css';
 
 const routes = (
   <Provider store={store}>
-    <Router history={browserHistory}>
-      <Route path="/" component={App}>
-        <IndexRoute component={Home}/>
-        <Route path="/about" component={About} />
-        <Route path="/events" component={EventPage} />
-        <Route path="/myEvents" component={MyEventsPage} />
-        <Route path="/signup" component={SignupForm} />
-        <Route path="/login" component={LoginForm} />
-      </Route>
-    </Router>
+  <div>
+    <ReduxToastr
+        timeOut={4000}
+        newestOnTop={false}
+        preventDuplicates={true}
+        position="top-right"
+        transitionIn="fadeIn"
+        transitionOut="fadeOut"
+        progressBar/>
+
+      <Router history={browserHistory}>
+        <Route path="/" component={App}>
+          <IndexRoute component={Home}/>
+          <Route path="/about" component={About} />
+          <Route path="/events" component={EventPage} />
+          <Route path="/myEvents" component={MyEventsPage} />
+          <Route path="/signup" component={SignupForm} />
+          <Route path="/login" component={LoginForm} />
+        </Route>
+      </Router>
+    </div>
   </Provider>
 );
 
