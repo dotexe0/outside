@@ -22,7 +22,7 @@ import { signup } from '../actions';
   _signupUser = (e) => {
     e.preventDefault();
     this.props.signup(this.state.email, this.state.password);
-    browserHistory.push('/');
+    // browserHistory.push('/');
   }
 
   render() {

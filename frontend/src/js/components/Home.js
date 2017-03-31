@@ -1,9 +1,5 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
-
-// import '../../css/Home.css';
-import SearchBar from './SearchBar';
-import FormComponent from './FormComponent';
 // import { Button } from 'react-bootstrap';
 
   const HomeWrapper = styled.div`
@@ -35,36 +31,6 @@ class Home extends Component {
           </ul>
         </div>
 
-      <div className="text-center">
-        <div className="row">
-
-          <div className="col-xs-12 col-md-4 col-md-offset-1">
-            <div className="card">
-              <div className="card-block">
-                <h3 className="card-title">Create a new Event</h3>
-                <p className="card-text">...</p>
-                <FormComponent />
-              </div>
-            </div>
-          </div>
-
-          <div className="col-xs-12 col-md-4 col-md-offset-1">
-            <div className="card">
-              <div className="card-block">
-                <h3 className="card-title">Find an existing Event</h3>
-                <p className="card-text">...</p>
-                  <div className="form-group row">
-                    <label htmlFor="search-input" className="col-2 col-form-label">Search</label>
-                    <div className="col-10">
-                      <SearchBar />
-                    </div>
-                  </div>
-              </div>
-            </div>
-          </div>
-
-        </div>
-      </div>
     </div>
         {this.props.children}
       </HomeWrapper>
