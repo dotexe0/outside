@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
-// import axios from 'axios';
 import {connect} from 'react-redux';
 import { createEvent } from '../actions';
 import { Checkbox } from 'react-bootstrap';
 import Autocomplete from 'react-google-autocomplete';
+import { SingleDatePicker } from 'react-dates';
+import 'react-dates/lib/css/_datepicker.css';
 
 class FormComponent extends Component {
 
@@ -32,7 +33,9 @@ class FormComponent extends Component {
 
   _location = (place) => this.setState({ location: place });
 
-  _time = (e) => this.setState({ time: e.target.value });
+  _time = (date) => {
+    this.setState({ time: date });
+  }
 
   _description = (e) => this.setState({ description: e.target.value });
 
@@ -57,10 +60,18 @@ return (
               </div>
 
               <div className="form-group row">
-                <label htmlFor="datetime-local-input" className="col-2 col-form-label">Date and time: </label>
-                <div className="col-4">
-                  <input onChange={ this._time } className="form-control" type="datetime-local" placeholder="2011-08-19T13:45:00" id="datetime-local-input" required="true"></input>
-                </div>
+                <label htmlFor="datetime-local-input" className="col-2 col-form-label">Pick a Date:</label><br/>
+                <SingleDatePicker
+                  date={this.state.date} // momentPropTypes.momentObj or null
+                  onDateChange={date => {
+                    this.setState({ date })
+                    this._time(date._d);
+                  }
+                } // PropTypes.func.isRequired
+                  focused={this.state.focused} // PropTypes.bool
+                  onFocusChange={({ focused }) => this.setState({ focused })} // PropTypes.func.isRequired
+
+                />
               </div>
 
               <div className="form-group row">
