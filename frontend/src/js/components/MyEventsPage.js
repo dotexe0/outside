@@ -4,6 +4,7 @@ import { Link } from 'react-router';
 import { getAllUserEvents, deleteEvent } from '../actions';
 import Event from './Event';
 import { Button, Panel, ListGroupItem } from 'react-bootstrap';
+// import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText} from 'material-ui/Card';
 
 class MyEventsPage extends Component {
   state = { loading: false }
@@ -48,12 +49,14 @@ class MyEventsPage extends Component {
         </div>
       )
     }
+
     return (
-      <div className="">
+      <div>
         {this.props.user.user.events.map((event, i) => (
-        <div key={i}>
-        <Event key={i} {...event} /><br />
+        <div key={i} className="col-xs-12 col-xs-offset-1 col-md-12 col-md-offset-3">
+        <Event key={i} {...event} />
         <Button bsStyle="danger" onClick={() => this._deleteEvent(event._id)}>Delete</Button>
+          &nbsp;
       </div>
       ))}
       </div>

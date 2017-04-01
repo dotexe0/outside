@@ -1,39 +1,36 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
+import { Button } from 'react-bootstrap';
 
-  const HomeWrapper = styled.div`
-
-  `;
 
 class Home extends Component {
 
-  _findEvent = async (query) => {
-    console.log("search clicked");
+  _updateText =  () => {
+
   }
 
   render() {
     return (
-      <HomeWrapper>
+      <div>
+        <div className="container">
+          <div className="jumbotron" bsStyle='info'>
+            <h1 className="text-center">Outside</h1>
+          </div>
 
-      <div className="container">
-        <div className="jumbotron">
-          <h1 className="text-center">Outside</h1>
-        </div>
+          <p className="text-center">
+            <h2>Create Outside</h2>
+          </p>
 
-        <p className="text-center">
-          <code>Book your next event with Outside</code>
-        </p>
+          <div className="text-center">
+            <ul className="list-unstyled">
+              <li className="card"><h3>Creating events has never been easier!</h3></li>
+              <li><h4>Invite your friends, colleagues, and enemies all within the same app.</h4></li>
+            </ul>
+          </div>
 
-        <div className="text-center">
-          <ul className="list-unstyled">
-            <li className="card"><h3>Creating events has never been easier!</h3></li>
-            <li><h4>Invite your friends, colleagues, and enemies all within the same app.</h4></li>
-          </ul>
-        </div>
-
-    </div>
+      </div>
         {this.props.children}
-      </HomeWrapper>
+      </div>
     );
   }
 }

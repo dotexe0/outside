@@ -57,7 +57,6 @@ export default (state=initialState, action) => {
       }
 
     case GET_ALL_USER_EVENTS:
-      console.log("getting all user events: ", action.payload.events.events);
       if (action.payload.events.events === undefined) {
         return {
           ...state,
@@ -84,7 +83,6 @@ export default (state=initialState, action) => {
       }
     }
     case GET_ALL_PUBLIC_EVENTS:
-      console.log("getting all PUBLIC events: ", action.payload.events);
       return {
         ...state,
         publicEvents: [...action.payload.events]

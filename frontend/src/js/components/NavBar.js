@@ -3,7 +3,7 @@ import { Link } from 'react-router';
 import {connect} from 'react-redux';
 import { getAllEvents, logout } from '../actions';
 import { browserHistory } from 'react-router';
-import { Navbar, NavItem, NavDropdown, MenuItem, Nav } from 'react-bootstrap';
+import { Navbar, NavItem, Nav } from 'react-bootstrap';
 
 class NavBar extends Component {
 
@@ -38,7 +38,7 @@ _logUserOut = () => {
           </Nav>
           <Nav pullRight>
             {this.props.user.user.isAuthenticated ? (
-              <NavItem onClick={this._logUserOut}><Link >Logout</Link></NavItem>
+              <NavItem onClick={this._logUserOut}><Link to="/logout">Logout</Link></NavItem>
             ) : ([
               <NavItem key={1}><Link to="/login">Login</Link></NavItem>,
               <NavItem key={2}><Link to="/signup">Signup</Link></NavItem>
