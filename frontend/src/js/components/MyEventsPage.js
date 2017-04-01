@@ -52,9 +52,9 @@ class MyEventsPage extends Component {
       <div className="">
         {this.props.user.user.events.map((event, i) => (
         <div key={i}>
-        {console.log('event: ', event)}
-        <Event key={i} {...event} />
-        </div>
+        <Event key={i} {...event} /><br />
+        <Button bsStyle="danger" onClick={() => this._deleteEvent(event._id)}>Delete</Button>
+      </div>
       ))}
       </div>
     )

@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { browserHistory } from 'react-router';
 import { login } from '../actions';
 
  class LoginForm extends Component {
@@ -16,13 +15,11 @@ import { login } from '../actions';
     this.setState({
       [e.target.id]: e.target.value
     })
-    // console.log(e.target.id);
   }
 
   _loginUser = (e) => {
     e.preventDefault();
     this.props.login(this.state.email, this.state.password);
-    // browserHistory.push('/');
   }
 
   render() {

@@ -25,7 +25,7 @@ export const getAllUserEvents = (userId) => async dispatch => {
     const res = await axios.post('/api/user/getEvents', { userId });
     console.log("res from backend", res.data.events);
     dispatch({ type: GET_ALL_USER_EVENTS, payload: res.data });
-    if (res.data.events.length == 0) {
+    if (res.data.events.length === 0) {
       toastr.info('No events found!', 'Make sure you have an account or are logged in.');
     } else if (res.data.events === []) {
       toastr.info('No events created yet!');

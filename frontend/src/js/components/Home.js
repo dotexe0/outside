@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
-// import { Button } from 'react-bootstrap';
 
   const HomeWrapper = styled.div`
 
@@ -15,9 +14,10 @@ class Home extends Component {
   render() {
     return (
       <HomeWrapper>
+
       <div className="container">
-        <div className="Home-header">
-          <h2 className="text-center">Outside</h2>
+        <div className="jumbotron">
+          <h1 className="text-center">Outside</h1>
         </div>
 
         <p className="text-center">
