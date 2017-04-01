@@ -1,7 +1,7 @@
-import passport from 'passport';
+// import passport from 'passport';
 // import './passport';
 import User from './model';
-import Event from '../events/model';
+// import Event from '../events/model';
 
   // ======================
   // LOCAL LOGIN
@@ -57,7 +57,7 @@ export const addEventToUser = async (req, res) => {
 };
 
 export const getAllUserEvents = async (req, res) => {
-  console.log('req.body-getAllUserEvents: ', req.body);
+  // console.log('req.body-getAllUserEvents: ', req.body);
   const { userId } = req.body;
 
   try {
