@@ -1,0 +1,34 @@
+{
+  "name": "outside",
+  "version": "1.0.0",
+  "description": "Events and meetings managing app",
+  "main": "index.js",
+  "engines": {
+    "node": "7.2.0"
+ },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dotexe0/outside.git"
+  },
+  "keywords": [
+    "nodejs"
+  ],
+  "author": "Daniel Varela",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dotexe0/outside/issues"
+  },
+  "homepage": "https://github.com/dotexe0/outside#readme",
+  "dependencies": {
+    "concurrently": "^3.4.0",
+    "rimraf": "^2.6.1"
+  },
+  "scripts": {
+   "build": "concurrently \"cd frontend && yarn build\" \"cd backend && yarn build\"",
+    "clean": "concurrently \"rimraf node_modules\" \"cd frontend && rimraf node_modules build\" \"cd backend && rimraf node_modules build\"",
+    "heroku-postbuild": "yarn build",
+    "install": "(cd frontend && yarn) && (cd backend && yarn)",
+    "start": "concurrently \"cd frontend && PORT=3000 yarn start\" \"cd backend && PORT=3001 yarn start\"",
+    "start:prod": "cd backend && yarn start:prod"  
+    }
+}

@@ -4,7 +4,7 @@ mongoose.Promise = global.Promise;
 
 function exec() {
   try {
-    mongoose.connect('mongodb://localhost/outside');
+    mongoose.connect('mongodb://admin:password@ds147920.mlab.com:47920/outside');
     // mongoose.set('debug', true);
     mongoose.connection
       .once('open', () => console.log('Connected to MongoDb'))
