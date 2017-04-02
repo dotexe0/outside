@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import '../../css/Home.css'
-import RaisedButton from 'material-ui/RaisedButton';
+// import RaisedButton from 'material-ui/RaisedButton';
 import { Link } from 'react-router';
-import { ListGroup, ListGroupItem } from 'react-bootstrap';
+import { ListGroup, ListGroupItem, Button } from 'react-bootstrap';
 import { login } from '../actions';
 
 class Home extends Component {
@@ -42,9 +42,9 @@ class Home extends Component {
               <ListGroupItem><h3>Create and manage your events in one place.</h3></ListGroupItem>
               <ListGroupItem><h4>Make them public for everyone to see or keep them private.</h4></ListGroupItem>
                 <ListGroupItem bsStyle="info">
-                <RaisedButton label="Demo" onClick={this._guestLogin}/>
-                <Link to="/signup"><RaisedButton label="Signup" /></Link>
-                <Link to="/login"><RaisedButton label="Login" /></Link>
+                <Button bsStyle="success"  onClick={this._guestLogin}>Demo</Button>
+                <Link to="/signup"><Button bsStyle="primary">Signup</Button></Link>
+                <Link to="/login"><Button bsStyle="primary">Login</Button></Link>
                 </ListGroupItem>
             </ListGroup>
           </div>

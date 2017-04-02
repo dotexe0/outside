@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router';
+// import { Link } from 'react-router';
 import {connect} from 'react-redux';
 import { getAllEvents, logout } from '../actions';
 import { browserHistory } from 'react-router';
-import { Navbar, NavItem, Nav } from 'react-bootstrap';
-import RaisedButton from 'material-ui/RaisedButton';
-import IconButton from 'material-ui/IconButton';
-import ActionHome from 'material-ui/svg-icons/action/home';
+import { Navbar, NavItem, Nav, Button } from 'react-bootstrap';
+// import RaisedButton from 'material-ui/RaisedButton';
+// import IconButton from 'material-ui/IconButton';
+// import ActionHome from 'material-ui/svg-icons/action/home';
 
 class NavBar extends Component {
 
@@ -20,50 +20,42 @@ _logUserOut = () => {
 }
 
   render() {
-
-    const styles = {
-    smallIcon: {
-      width: 36,
-      height: 30,
-      color: 'white'
-    },
-    small: {
-      width: 72,
-      height: 50,
-      padding: 0
-      }
-  };
       return (
       <Navbar inverse collapseOnSelect>
         <Navbar.Header>
           <Navbar.Brand>
-            <Link to="/">
-            <IconButton
-              iconStyle={styles.smallIcon}
-              style={styles.small}
-            >
-              <ActionHome />
-            </IconButton>
-            </Link>
+            <h5 onClick={() => browserHistory.push('/')}>Outside</h5>
           </Navbar.Brand>
         <Navbar.Toggle />
         </Navbar.Header>
         <Navbar.Collapse>
           <Nav>
             {this.props.user.user.isAuthenticated ? (
-                  <NavItem><Link to="/createEvent"><RaisedButton label="Create Event" /></Link></NavItem>
+                  <NavItem onClick={() => browserHistory.push('/createEvent')}>
+                    <Button bsStyle="default">Create Event</Button>
+                  </NavItem>
                 ) : (
                   null
                 )}
-            <NavItem><Link to="/events"><RaisedButton label="Public Events" /></Link></NavItem>
-            <NavItem><Link to="/myEvents"><RaisedButton label="My Events" /></Link></NavItem>
+            <NavItem onClick={() => browserHistory.push('/events')}>
+              <Button bsStyle="default">Public Event</Button>
+            </NavItem>
+            <NavItem onClick={() => browserHistory.push('/myEvents')}>
+              <Button bsStyle="default">My Event</Button>
+            </NavItem>
           </Nav>
           <Nav pullRight>
             {this.props.user.user.isAuthenticated ? (
-              <NavItem onClick={this._logUserOut}><Link to="/logout"><RaisedButton label="Logout" /></Link></NavItem>
+              <NavItem onClick={this._logUserOut}>
+              <Button bsStyle="default">Logout</Button>
+              </NavItem>
             ) : ([
-              <NavItem key={1}><Link to="/login"><RaisedButton label="Login" /></Link></NavItem>,
-              <NavItem key={2}><Link to="/signup"><RaisedButton label="Signup" /></Link></NavItem>
+              <NavItem key={1} onClick={() => browserHistory.push('/login')}>
+                <Button bsStyle="default">Login</Button>
+              </NavItem>,
+              <NavItem key={2} onClick={() => browserHistory.push('/signup')}>
+                <Button bsStyle="default">Signup</Button>
+              </NavItem>
             ])}
           </Nav>
         </Navbar.Collapse>
@@ -77,3 +69,37 @@ const mapStateToProps = state => ({
 });
 
 export default connect(mapStateToProps, { getAllEvents, logout })(NavBar);
+
+
+        // <Navbar.Header>
+        //   <Navbar.Brand>
+        //     <Link to="/">
+        //     <IconButton
+        //       iconStyle={styles.smallIcon}
+        //       style={styles.small}
+        //     >
+        //       <ActionHome />
+        //     </IconButton>
+        //     </Link>
+        //   </Navbar.Brand>
+        // <Navbar.Toggle />
+        // </Navbar.Header>
+        // <Navbar.Collapse>
+        //   <Nav>
+        //     {this.props.user.user.isAuthenticated ? (
+        //           <NavItem onClick={browserHistory.push('/createEvent')}><RaisedButton label="Create Event" /></NavItem>
+        //         ) : (
+        //           null
+        //         )}
+        //     <NavItem onClick={browserHistory.push('/events')}><RaisedButton label="Public Events" /></NavItem>
+        //     <NavItem onClick={browserHistory.push('/myEvents')}><RaisedButton label="My Events" /></NavItem>
+        //   </Nav>
+        //   <Nav pullRight>
+        //     {this.props.user.user.isAuthenticated ? (
+        //       <NavItem onClick={this._logUserOut}><RaisedButton label="Logout" /></NavItem>
+        //     ) : ([
+        //       <NavItem key={1} onClick={browserHistory.push('/login')}><RaisedButton label="Login" /></NavItem>,
+        //       <NavItem key={2} onClick={browserHistory.push('/signup')}><RaisedButton label="Signup" /></NavItem>
+        //     ])}
+        //   </Nav>
+        // </Navbar.Collapse>
