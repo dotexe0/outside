@@ -11,13 +11,11 @@ const app = express();
 //middlewares
 middlewareConfig(app);
 
-//end points
-app.use('/api', [EventRoutes, UserRoutes]);
-// app.use('/login', [UserRoutes]);
-// app.use('/signup', [UserRoutes]);
-
 const staticFiles = express.static(path.join(__dirname, '../../frontend/build'));
 app.use(staticFiles);
+
+//end points
+app.use('/api', [EventRoutes, UserRoutes]);
 app.use('/*', staticFiles);
 
 
