@@ -1,6 +1,6 @@
 import express from 'express';
-import './config/db'; // database
 import path from 'path';
+import './config/db'; // database
 import middlewareConfig from './config/middlewares';
 
 import { EventRoutes } from './modules/events';
