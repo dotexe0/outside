@@ -1,6 +1,6 @@
 import express from 'express';
-import './config/db'; // database
 import path from 'path';
+import './config/db'; // database
 import middlewareConfig from './config/middlewares';
 
 import { EventRoutes } from './modules/events';
@@ -18,14 +18,10 @@ app.use('/api', [EventRoutes, UserRoutes]);
 
 const staticFiles = express.static(path.join(__dirname, '../../frontend/build'));
 app.use(staticFiles);
-app.use('/*', [staticFiles, EventRoutes, UserRoutes]);
+app.use('/*', staticFiles);
 
 
-const PORT = process.env.PORT || 3001;
-
-app.listen(PORT, err => {
-  if (err) {
-    console.error(err);
-  }
-  console.log(`Server running on port ${PORT}`);
+app.set('port', (process.env.PORT || 3001));
+app.listen(app.get('port'), () => {
+  console.log(`Listening on ${app.get('port')}`);
 });
