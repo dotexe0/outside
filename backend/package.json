@@ -24,9 +24,9 @@
     "eslint-config-equimper": "^1.5.1"
   },
   "scripts": {
-    // "dev": "NODE_ENV=development nodemon server.js",
+    "dev": "NODE_ENV=development nodemon server.js",
     "build": "babel . --ignore node_modules,build --out-dir build",
-    "start": "nodemon server.js",
+    "start": "nodemon -r server.js",
     "start:prod": "node build/server.js"
   }
 }
