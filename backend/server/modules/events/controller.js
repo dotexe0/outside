@@ -21,7 +21,7 @@ export const createEvent = async (req, res) => {
 
 export const getAllPublicEvents = async (req, res) => {
   try {
-    return res.status(200).json({ events: await Event.find({}) });
+    return res.status(200).json({ events: await Event.find({ isPrivate: false }) });
   } catch (error) {
     console.log('Get all events error', error);
     return res.status(404).json({ error: true });

@@ -9,7 +9,6 @@ export const createEvent = (userId, event) => async dispatch => {
   console.log('event: ', event);
   try {
     const res = await axios.post('/api/user/event', {event, userId});
-    console.log("returned res.data by backend: ", res.data);
     dispatch({ type: CREATE_EVENT, payload: res.data });
     toastr.success('Successfully', 'Event created!');
     browserHistory.push('/myEvents');
@@ -20,10 +19,8 @@ export const createEvent = (userId, event) => async dispatch => {
 
 export const GET_ALL_USER_EVENTS = 'GET_ALL_USER_EVENTS';
 export const getAllUserEvents = (userId) => async dispatch => {
-  console.log("get all users id", userId);
   try {
     const res = await axios.post('/api/user/getEvents', { userId });
-    console.log("res from backend", res.data.events);
     dispatch({ type: GET_ALL_USER_EVENTS, payload: res.data });
     if (res.data.events.length === 0) {
       toastr.info('No events found!', 'Make sure you have an account or are logged in.');
@@ -33,7 +30,7 @@ export const getAllUserEvents = (userId) => async dispatch => {
       toastr.success('All events successfully imported.');
     }
   } catch (e) {
-    console.log("error getting all..", e);
+    toastr.error('Error grabbing your events!');
   }
 };
 
@@ -41,11 +38,9 @@ export const GET_ALL_PUBLIC_EVENTS = 'GET_ALL_PUBLIC_EVENTS';
 export const getAllPublicEvents = () => async dispatch => {
   try {
     const res = await axios.get('/api/public/events');
-    console.log("res", res);
       dispatch({ type: GET_ALL_PUBLIC_EVENTS, payload: res.data });
-    // console.log("events", events);
   } catch (e) {
-    console.log("error getting all..", e);
+    toastr.error('Error grabbing public events!');
   }
 };
 
@@ -58,7 +53,7 @@ export const deleteEvent = (id) => async dispatch => {
     dispatch({ type: DELETE_EVENT, payload: id });
     // console.log("events", events);
   } catch (e) {
-    console.log("error getting all..", e)
+    toastr.error('Error deleting event!');
   }
 };
 

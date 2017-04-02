@@ -29,9 +29,9 @@ class EventPage extends Component {
       );
     }
     return (
-      <div>
+      <div >
         <div>{this.props.user.publicEvents.map((event, i) => (
-          <Event key={i} {...event} />
+          <Event key={i} {...event}/>
         ))}</div>
       </div>
     );
