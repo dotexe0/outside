@@ -18,7 +18,7 @@ app.use('/api', [EventRoutes, UserRoutes]);
 
 const staticFiles = express.static(path.join(__dirname, '../../frontend/build'));
 app.use(staticFiles);
-app.use('/*', staticFiles);
+app.use('/*', [staticFiles, EventRoutes, UserRoutes]);
 
 
 const PORT = process.env.PORT || 3001;
