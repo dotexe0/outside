@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-// import styled from 'styled-components';
-// import { Button } from 'react-bootstrap';
+import '../../css/Home.css'
 import RaisedButton from 'material-ui/RaisedButton';
 import { Link } from 'react-router';
 import { ListGroup, ListGroupItem } from 'react-bootstrap';
@@ -15,21 +14,33 @@ class Home extends Component {
   }
 
   render() {
+     const styles = {
+    smallIcon: {
+      width: 36,
+      height: 30,
+      color: 'white'
+    },
+    small: {
+      padding: 0,
+      backgroundColor: '#31B0D5'
+      }
+  };
+
     return (
       <div>
         <div className="container">
-          <div className="jumbotron">
+          <div className="jumbotron"  style={styles.small}>
             <h1 className="text-center">Outside</h1>
           </div>
 
           <h2><p className="text-center">
-            Create Outside
+            An app for keeping track of your events and meetings.
           </p></h2>
 
           <div className="text-center">
             <ListGroup className="list-unstyled">
-              <ListGroupItem><h3>Creating events has never been easier!</h3></ListGroupItem>
-              <ListGroupItem><h4>Invite your friends, colleagues, and enemies all within the same app.</h4></ListGroupItem>
+              <ListGroupItem><h3>Create and manage your events in one place.</h3></ListGroupItem>
+              <ListGroupItem><h4>Make them public for everyone to see or keep them private.</h4></ListGroupItem>
                 <ListGroupItem bsStyle="info">
                 <RaisedButton label="Demo" onClick={this._guestLogin}/>
                 <Link to="/signup"><RaisedButton label="Signup" /></Link>
@@ -40,6 +51,8 @@ class Home extends Component {
 
       </div>
         {this.props.children}
+        <div className="footer">
+        </div>
       </div>
     );
   }
