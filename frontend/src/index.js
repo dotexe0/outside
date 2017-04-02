@@ -5,8 +5,6 @@ import { Provider } from 'react-redux';
 import ReduxToastr from 'react-redux-toastr'
 import store from './js/store';
 
-// import NavBar from './js/components/NavBar';
-
 import App from './js/components/App';
 import Home from './js/components/Home';
 import FormComponent from './js/components/FormComponent';
