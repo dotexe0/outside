@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router';
 import { getAllUserEvents, deleteEvent } from '../actions';
 import Event from './Event';
-import { Button, Panel, ListGroupItem } from 'react-bootstrap';
+import { Button, Panel, ListGroupItem, ProgressBar } from 'react-bootstrap';
 
 class MyEventsPage extends Component {
   state = { loading: false }
@@ -23,7 +23,12 @@ class MyEventsPage extends Component {
     const noAccount = 'Need an account?';
     const notLoggedIn = 'You are not logged in.';
     if (this.state.loading) {
-      return <h1 className="col-xs-6 col-xs-offset-2 col-md-4 col-md-offset-4">Loading...</h1>
+      return (
+        <div className="col-xs-6 col-xs-offset-4 col-md-4 col-md-offset-4">
+          <h1>Loading ... </h1>
+          <ProgressBar active now={65} />
+        </div>
+      );
     }
     if (!this.props.user.user.events || this.props.user.user.events.length === 0) {
       return (
