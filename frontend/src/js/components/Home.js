@@ -34,7 +34,7 @@ class Home extends Component {
           </div>
 
           <h2><p className="text-center">
-            An app for keeping track of your events and meetings.
+            <ListGroupItem>An app for keeping track of your events and meetings.</ListGroupItem>
           </p></h2>
 
           <div className="text-center">
@@ -42,9 +42,9 @@ class Home extends Component {
               <ListGroupItem><h3>Create and manage your events in one place.</h3></ListGroupItem>
               <ListGroupItem><h4>Make them public for everyone to see or keep them private.</h4></ListGroupItem>
                 <ListGroupItem bsStyle="info">
-                <Button bsStyle="success"  onClick={this._guestLogin}>Demo</Button>
-                <Link to="/signup"><Button bsStyle="primary">Signup</Button></Link>
-                <Link to="/login"><Button bsStyle="primary">Login</Button></Link>
+                <Button bsStyle="primary" onClick={this._guestLogin} style={{marginRight: '15px'}}>Demo</Button>
+                <Link to="/signup"><Button bsStyle="primary" style={{marginRight: '15px'}}>Signup</Button></Link>
+                <Link to="/login"><Button bsStyle="primary" style={{marginRight: '15px'}}>Login</Button></Link>
                 </ListGroupItem>
             </ListGroup>
           </div>
