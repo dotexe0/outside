@@ -41,7 +41,7 @@ http://.........com
 * Heroku
 
 ## Landing Page...
-![Landing Page](http://imgur.com/bEAq1VC.jpg)
+![Landing Page](http://imgur.com/SxLNkkw.jpg)
 
 ## Creating Events requires login
 ![Landing Page](http://imgur.com/AlwBD9v.png)
