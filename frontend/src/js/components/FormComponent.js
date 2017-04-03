@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux';
 import { createEvent } from '../actions';
-import { Checkbox, ListGroup, ListGroupItem, Button } from 'react-bootstrap';
+import { Checkbox, ListGroupItem } from 'react-bootstrap';
 import Autocomplete from 'react-google-autocomplete';
 import { SingleDatePicker } from 'react-dates';
 import 'react-dates/lib/css/_datepicker.css';

@@ -3,7 +3,7 @@ import {connect} from 'react-redux';
 import { getAllEvents, logout } from '../actions';
 import { browserHistory } from 'react-router';
 import { Navbar, NavItem, Nav, Button } from 'react-bootstrap';
-
+import '../../css/Navbar.css';
 class NavBar extends Component {
 
   _getAllEvents = () => {
@@ -19,7 +19,7 @@ _logUserOut = () => {
       return (
       <Navbar inverse collapseOnSelect>
         <Navbar.Header>
-         <Navbar.Brand style={{cursor: 'pointer', cursor: 'hand'}}>
+         <Navbar.Brand >
             <h5 onClick={() => browserHistory.push('/')}>Outside</h5>
           </Navbar.Brand>
         <Navbar.Toggle />
