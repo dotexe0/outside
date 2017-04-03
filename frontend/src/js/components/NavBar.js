@@ -23,7 +23,7 @@ _logUserOut = () => {
       return (
       <Navbar inverse collapseOnSelect>
         <Navbar.Header>
-          <Navbar.Brand>
+         <Navbar.Brand>
             <h5 onClick={() => browserHistory.push('/')}>Outside</h5>
           </Navbar.Brand>
         <Navbar.Toggle />

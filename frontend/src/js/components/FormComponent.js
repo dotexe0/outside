@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux';
 import { createEvent } from '../actions';
-import { Checkbox } from 'react-bootstrap';
+import { Checkbox, ListGroup, ListGroupItem, Button } from 'react-bootstrap';
 import Autocomplete from 'react-google-autocomplete';
 import { SingleDatePicker } from 'react-dates';
 import 'react-dates/lib/css/_datepicker.css';
@@ -50,15 +50,21 @@ return (
       <div className="col-xs-6 col-xs-offset-4 col-md-4 col-md-offset-4">
         <div className="card">
           <div className="card-block">
-            <h3 className="card-title">Create a new Event</h3>
-            <form >
+            <ListGroupItem>
+              <h3 className="card-title">Create a new Event</h3>
+            </ListGroupItem>
+
+            <form style={{marginBottom: '40px'}}>
+            <ListGroupItem bsStyle="info">
               <div className="form-group row">
                 <label htmlFor="text-input" className="col-2 col-form-label">Event Name: </label>
                 <div className="col-4">
-                  <input onChange={ this._eventName } className="form-control" type="text" placeholder="Graduation Party" id="text-input" required="true"></input>
+                  <input style={{width: '80%', margin:'0 auto'}} onChange={ this._eventName } className="form-control" type="text" placeholder="Graduation Party" id="text-input" required="true"></input>
                 </div>
               </div>
+            </ListGroupItem>
 
+            <ListGroupItem bsStyle="info">
               <div className="form-group row">
                 <label htmlFor="datetime-local-input" className="col-2 col-form-label">Pick a Date:</label><br/>
                 <SingleDatePicker
@@ -70,16 +76,17 @@ return (
                 } // PropTypes.func.isRequired
                   focused={this.state.focused} // PropTypes.bool
                   onFocusChange={({ focused }) => this.setState({ focused })} // PropTypes.func.isRequired
-
                 />
               </div>
+            </ListGroupItem>
 
+            <ListGroupItem bsStyle="info">
               <div className="form-group row">
                 <label htmlFor="messag-text" className="control-label">Location:</label>
                 <div className="col-4">
                 <Autocomplete
                 className="form-control"
-                  style={{width: '100%'}}
+                  style={{width: '80%', margin:'0 auto'}}
                   onPlaceSelected={(place) => {
                     this._location(place.formatted_address || event.target.value)
                   }}
@@ -87,24 +94,29 @@ return (
                  />
                 </div>
               </div>
+            </ListGroupItem>
 
+            <ListGroupItem bsStyle="info">
               <div className="form-group row">
                 <label htmlFor="messag-text" className="control-label">Description:</label>
                 <div className="col-4">
-                  <textarea onChange={ this._description } className="form-control" id="message-text" placeholder="Lets get together for..." required="true"></textarea>
+                  <textarea style={{width: '80%', margin:'0 auto'}} onChange={ this._description } className="form-control" id="message-text" placeholder="Lets get together for..." required="true"></textarea>
                 </div>
               </div>
+            </ListGroupItem>
+
+            <ListGroupItem bsStyle="info">
               <div className="form-group row">
                 <label htmlFor="email-input" className="col-2 col-form-label">Invites: </label>
                 <div className="col-4">
-                  <input onChange={ this._invited } className="form-control" type="email" required="true" placeholder="friend@email.com, friend2@email.com" id="email-input"></input>
+                  <input style={{width: '80%', margin:'0 auto'}} onChange={ this._invited } className="form-control" type="email" required="true" placeholder="friend@email.com, friend2@email.com" id="email-input"></input>
                 </div>
-                <Checkbox onClick={this._isPublic}>
-                Make Private
-                </Checkbox>
-
+                  <Checkbox onClick={this._isPublic}>
+                  Make Private
+                  </Checkbox>
               </div>
-              <button type="button" className="btn btn-primary" onClick={this._createEvent}>Create</button>
+            <button type="button" className="btn btn-primary" onClick={this._createEvent}>Create</button>
+            </ListGroupItem>
           </form>
 
           </div>
