@@ -5,7 +5,6 @@ import { Panel } from 'react-bootstrap';
 export default class Event extends Component {
   render() {
     const {description, eventName, invited, time, location } = this.props;
-    // console.log('Event Comp Props: ', this.props);
     return (
       <div className="col-xs-8 col-xs-offset-1 col-md-4 col-md-offset-1">
         <Panel bsSize="large" className="" header={`Event: ${eventName}`} bsStyle="info">

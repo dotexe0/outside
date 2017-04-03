@@ -4,7 +4,6 @@ import { Link } from 'react-router';
 import { getAllUserEvents, deleteEvent } from '../actions';
 import Event from './Event';
 import { Button, Panel, ListGroupItem } from 'react-bootstrap';
-// import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText} from 'material-ui/Card';
 
 class MyEventsPage extends Component {
   state = { loading: false }
@@ -63,8 +62,6 @@ class MyEventsPage extends Component {
     )
   }
 }
-
-
 
 export default connect(
   state => ({
