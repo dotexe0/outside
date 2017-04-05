@@ -31,6 +31,11 @@ class FormComponent extends Component {
 
   _eventName = (e) => this.setState({ eventName: e.target.value });
 
+  _updateLocationText = (e) => {
+    console.log(e.target.value);
+    this.setState({ location: e.target.value })
+  }
+
   _location = (place) => this.setState({ location: place });
 
   _time = (date) => {
@@ -87,6 +92,7 @@ return (
                 <Autocomplete
                 className="form-control"
                   style={{width: '80%', margin:'0 auto'}}
+                  onChange={ (e) => this._updateLocationText(e) }
                   onPlaceSelected={(place) => {
                     this._location(place.formatted_address || event.target.value)
                   }}
