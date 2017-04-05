@@ -22,14 +22,14 @@ class Home extends Component {
     },
     small: {
       padding: 0,
-      backgroundColor: '#31B0D5'
+      backgroundColor: '#457B9D'
       }
   };
 
     return (
       <div>
-        <div className="container">
-          <div className="jumbotron"  style={styles.small}>
+        <div className="container col-xs-6 col-xs-offset-4 col-md-4 col-md-offset-4">
+          <div className="jumbotron "  style={styles.small}>
             <h1 className="text-center">Outside</h1>
           </div>
 

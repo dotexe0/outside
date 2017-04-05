@@ -1,0 +1,12 @@
+.login-form, .signup-form {
+  border: 1px solid black;
+  border-radius: 3px;
+  background: white;
+  padding: 10px;
+}
+
+
+.btn-primary {
+  background: black;
+  opacity: 0.9;
+}

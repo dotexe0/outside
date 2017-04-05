@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { signup } from '../actions';
+import '../../css/loginSignupForm.css';
 
  class SignupForm extends Component {
   state = {

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { getAllPublicEvents } from '../actions';
 import Event from './Event';
-import { ProgressBar } from 'react-bootstrap';
+import { ProgressBar, ListGroupItem } from 'react-bootstrap';
 
 class EventPage extends Component {
   state = { loading: false }
@@ -25,7 +25,10 @@ class EventPage extends Component {
     }
     if (this.props.user.publicEvents.length === 0) {
       return (
-        <h2>No Events created yet..</h2>
+          <div className="col-xs-6 col-xs-offset-2 col-md-4 col-md-offset-4">
+            <ListGroupItem header="No events created yet.">
+            </ListGroupItem>
+          </div>
       );
     }
     return (
