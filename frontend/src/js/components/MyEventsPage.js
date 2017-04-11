@@ -38,15 +38,15 @@ class MyEventsPage extends Component {
 
           {this.props.user.user.isAuthenticated ? (
           <Panel header="No events created yet." bsStyle="primary">
-            <Link to='/createEvent'><Button bsStyle="success">Create Event</Button></Link>
+            <Link to='/createEvent'><Button bsStyle="primary">Create Event</Button></Link>
           </Panel>
           ) : (
           <span>
             <Panel header={notLoggedIn} bsStyle="primary">
-              <Link to='/login'><Button bsStyle="success">Login</Button></Link>
+              <Link to='/login'><Button bsStyle="primary">Login</Button></Link>
             </Panel>
             <Panel header={noAccount} bsStyle="primary">
-              <Link to='/signup'><Button bsStyle="success">Signup</Button></Link>
+              <Link to='/signup'><Button bsStyle="primary">Signup</Button></Link>
             </Panel>
           </span>
           )}

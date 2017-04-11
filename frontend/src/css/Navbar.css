@@ -1,3 +1,13 @@
-.navbar-brand, h5, .navbar-header{
+.navbar-brand, h5, .navbar-header {
+  margin-top: 5px;
   cursor: pointer !important
+};
+
+ul.nav-bar-nav {
+  margin-top: 4px;
+}
+
+.btn-primary {
+  background: black;
+  opacity: 0.9;
 }

@@ -19,7 +19,7 @@ class Home extends Component {
         <section className="bg-primary" id="about">
             <div className="container">
                 <div className="row">
-                    <div className="col-lg-8 col-lg-offset-2 text-center">
+                    <div className="col-lg-10 col-lg-offset-2 text-center">
                         <h1 className="section-heading">An app for keeping track of your events and meetings.</h1>
                         <hr className="light"></hr>
                         <h3 className="text-faded">Create and manage your events in one place. Make them public for everyone to see or keep them private.</h3>

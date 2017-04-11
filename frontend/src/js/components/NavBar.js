@@ -28,29 +28,29 @@ _logUserOut = () => {
           <Nav>
             {this.props.user.user.isAuthenticated ? (
                   <NavItem onClick={() => browserHistory.push('/createEvent')}>
-                    <Button bsStyle="default">Create Event</Button>
+                    <Button bsStyle="primary">Create Event</Button>
                   </NavItem>
                 ) : (
                   null
                 )}
             <NavItem onClick={() => browserHistory.push('/events')}>
-              <Button bsStyle="default">Public Event</Button>
+              <Button bsStyle="primary">Public Event</Button>
             </NavItem>
             <NavItem onClick={() => browserHistory.push('/myEvents')}>
-              <Button bsStyle="default">My Event</Button>
+              <Button bsStyle="primary">My Event</Button>
             </NavItem>
           </Nav>
           <Nav pullRight>
             {this.props.user.user.isAuthenticated ? (
               <NavItem onClick={this._logUserOut}>
-              <Button bsStyle="default">Logout</Button>
+              <Button bsStyle="primary">Logout</Button>
               </NavItem>
             ) : ([
               <NavItem key={1} onClick={() => browserHistory.push('/login')}>
-                <Button bsStyle="default">Login</Button>
+                <Button bsStyle="primary">Login</Button>
               </NavItem>,
               <NavItem key={2} onClick={() => browserHistory.push('/signup')}>
-                <Button bsStyle="default">Signup</Button>
+                <Button bsStyle="primary">Signup</Button>
               </NavItem>
             ])}
           </Nav>
