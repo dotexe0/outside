@@ -3,6 +3,7 @@
   cursor: pointer !important;
   position: relative;
   z-index: 1;
+  /*color: #C8AB83;*/
 };
 
 ul.nav-bar-nav {
@@ -15,6 +16,13 @@ ul.nav-bar-nav {
   border-color: #BC7C43;
 }
 
+.btn-primary:hover, .btn-primary:visited, .btn-primary:focus   {
+  border-color: #BC7C43;
+  background-color: #C8AB83;
+  outline: 0;
+
+}
+
 nav.navbar.navbar-inverse {
   height: 70px;
   position: relative;
@@ -25,7 +33,24 @@ nav.navbar.navbar-inverse {
   background: #222222;
   border-bottom-left-radius: 5px;
   border-bottom-right-radius: 5px;
-  border-color: solid blue;
   opacity: 0.95;
   margin: auto;
+}
+
+.list-group-item {
+  border: none;
+  background: #C8AB83;
+  border-radius: 10px;
+  margin-bottom: 5px;
+}
+
+.list-group-item-info {
+  background: white;
+  /*border-bottom: 1px solid grey;*/
+  color: black;
+;}
+
+.card, .no-events {
+  background-color: white;
+  border-radius: 10px;
 }

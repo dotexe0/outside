@@ -29,6 +29,7 @@ class MyEventsPage extends Component {
     if (!this.props.user.user.events || this.props.user.user.events.length === 0) {
       return (
         <div className="col-xs-6 col-xs-offset-2 col-md-4 col-md-offset-4">
+          <div className="no-events">
           <ListGroupItem header="No events created yet.">
           </ListGroupItem>
 
@@ -46,6 +47,7 @@ class MyEventsPage extends Component {
             </Panel>
           </span>
           )}
+          </div>
         </div>
       )
     }
