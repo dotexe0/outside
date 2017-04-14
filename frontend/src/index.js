@@ -3,9 +3,10 @@ import ReactDOM from 'react-dom';
 import { Router, Route, browserHistory, IndexRoute } from 'react-router';
 import { Provider } from 'react-redux';
 import ReduxToastr from 'react-redux-toastr'
+import 'normalize.css';
+
 import store from './js/store';
 
-// import injectTapEventPlugin from 'react-tap-event-plugin';
 import App from './js/components/App';
 import Home from './js/components/Home';
 import FormComponent from './js/components/FormComponent';
@@ -14,8 +15,6 @@ import MyEventsPage from './js/components/MyEventsPage';
 import SignupForm from './js/components/SignupForm';
 import LoginForm from './js/components/LoginForm';
 import './css/index.css';
-
-// injectTapEventPlugin();
 
 const routes = (
   <Provider store={store}>

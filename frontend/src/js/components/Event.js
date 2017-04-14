@@ -1,17 +1,35 @@
 import React, { Component } from 'react';
 import moment from 'moment';
-import { Panel } from 'react-bootstrap';
+import { Panel, Button } from 'react-bootstrap';
+import classNames from 'classnames';
 
 export default class Event extends Component {
+
+   _deleteEvent = (id) => {
+     console.log('delete ID: ', id);
+    this.props.deleteEvent(id);
+  }
+
   render() {
-    const {description, eventName, invited, time, location } = this.props;
+    const {description, eventName, invited, time, location, routeLocation, _id } = this.props;
+
+    //   var eventClass = classNames({
+    //   'col-xs-5 col-md-5 col-lg-5': routeLocation === '/events',
+    //   'col-xs-12 col-md-12 col-lg-12': routeLocation === '/myEvents'
+    // });
+
     return (
-      <div className="col-xs-8 col-xs-offset-1 col-md-4 col-md-offset-1">
-        <Panel bsSize="large" className="" header={`Event: ${eventName}`} bsStyle="info">
+      <div className={routeLocation === '/events' ?
+           'col-xs-10 col-xs-offset-1 col-md-5 col-md-offset-1 col-lg-4' :
+           'col-xs-12 col-md-12 col-lg-12'}>
+        <Panel bsSize="large" header={`Event: ${eventName}`} bsStyle="info">
           <h5>Date: {moment(time).format('MMMM Do YYYY')}</h5>
           <h5>Location: {location}</h5>
           <h5>Description: {description}</h5>
           <h5>Invited: {invited.join(", ")}</h5>
+          {routeLocation === '/myEvents' &&
+            <Button bsStyle="danger" onClick={() => this._deleteEvent(_id)}>Delete</Button>
+          }
           &nbsp;
         </Panel>
       </div>

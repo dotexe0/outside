@@ -13,10 +13,6 @@ class MyEventsPage extends Component {
     await this.props.getAllUserEvents(this.props.user.user._id);
     this.setState({ loading: false })
   }
-   _deleteEvent = (id) => {
-     console.log('delete ID: ', id);
-    this.props.deleteEvent(id);
-  }
 
   render() {
     console.log('props: ', this.props);
@@ -57,9 +53,8 @@ class MyEventsPage extends Component {
     return (
       <div>
         {this.props.user.user.events.map((event, i) => (
-        <div key={i} className="col-xs-12 col-xs-offset-1 col-md-12 col-md-offset-3">
-        <Event key={i} {...event} />
-        <Button bsStyle="danger" onClick={() => this._deleteEvent(event._id)}>Delete</Button>
+        <div key={i} className="col-xs-10 col-xs-offset-1 col-md-5 col-md-offset-1 col-lg-5 col-lg-offset-1">
+        <Event key={i} {...event} routeLocation={this.props.location.pathname} deleteEvent={this.props.deleteEvent}/>
           &nbsp;
       </div>
       ))}

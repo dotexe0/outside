@@ -1,27 +1,3 @@
-/*.Home {
-  text-align: center;
-}
-
-.Home-logo {
-  animation: Home-logo-spin infinite 20s linear;
-  height: 80px;
-}
-
-.Home-header {
-  background-color: #222;
-  height: 150px;
-  padding: 20px;
-  color: white;
-}
-
-.Home-intro {
-  font-size: large;
-}
-
-@keyframes Home-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
-}*/
 
 body {
   background: url('../img/road.jpg') no-repeat;
@@ -29,6 +5,7 @@ body {
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
+  background-repeat: no-repeat;
   width: 100%;
   height: 100%;
   /*opacity: 1;*/
