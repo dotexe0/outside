@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import moment from 'moment';
 import { Panel, Button } from 'react-bootstrap';
-import classNames from 'classnames';
 
 export default class Event extends Component {
 
@@ -12,11 +11,6 @@ export default class Event extends Component {
 
   render() {
     const {description, eventName, invited, time, location, routeLocation, _id } = this.props;
-
-    //   var eventClass = classNames({
-    //   'col-xs-5 col-md-5 col-lg-5': routeLocation === '/events',
-    //   'col-xs-12 col-md-12 col-lg-12': routeLocation === '/myEvents'
-    // });
 
     return (
       <div className={routeLocation === '/events' ?

@@ -10,3 +10,7 @@
   background: black;
   opacity: 0.9;
 }
+
+.btn-primary:hover {
+  background: #BC7C43;
+}

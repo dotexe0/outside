@@ -52,7 +52,7 @@ render() {
 return (
   <div className="text-center">
     <div className="row">
-      <div className="col-xs-6 col-xs-offset-4 col-md-4 col-md-offset-4">
+      <div className="col-xs-8 col-xs-offset-2 col-md-4 col-md-offset-4 col-lg-4">
         <div className="card">
           <div className="card-block">
             <ListGroupItem>
