@@ -1,5 +1,6 @@
-* {
-  /*max-width: 100%;*/
+.container {
+  padding-right: 10px;
+  padding-left: 10px;
 }
 
 body {
