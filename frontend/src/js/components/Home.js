@@ -24,8 +24,8 @@ class Home extends Component {
                         <hr className="light"></hr>
                         <h3 className="text-faded">Create and manage your events in one place. Make them public for everyone to see or keep them private.</h3>
                         <Button bsStyle="primary" onClick={this._guestLogin} style={{marginRight: '15px'}}>Demo</Button>
-                        <Link to="/signup"><Button bsStyle="primary" style={{marginRight: '15px'}}>Signup</Button></Link>
                         <Link to="/login"><Button bsStyle="primary" style={{marginRight: '15px'}}>Login</Button></Link>
+                        <Link to="/signup"><Button bsStyle="primary" style={{marginRight: '15px'}}>Signup</Button></Link>
                     </div>
                 </div>
             </div>

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux';
-import { getAllEvents, logout } from '../actions';
+import { getAllEvents, logout, login } from '../actions';
 import { browserHistory } from 'react-router';
 import { Navbar, NavItem, Nav, Button } from 'react-bootstrap';
 import '../../css/Navbar.css';
@@ -9,6 +9,11 @@ class NavBar extends Component {
   _getAllEvents = () => {
     this.props.getAllEvents();
   }
+
+  _guestLogin =  (e) => {
+  e.preventDefault();
+  this.props.login("guest", "password");
+}
 
 _logUserOut = () => {
   this.props.logout();
@@ -46,12 +51,16 @@ _logUserOut = () => {
               <Button bsStyle="primary">Logout</Button>
               </NavItem>
             ) : ([
-              <NavItem key={1} onClick={() => browserHistory.push('/login')}>
+              <NavItem key={1} onClick={this._guestLogin}>
+                <Button bsStyle="primary">Demo</Button>
+              </NavItem>,
+              <NavItem key={2} onClick={() => browserHistory.push('/login')}>
                 <Button bsStyle="primary">Login</Button>
               </NavItem>,
-              <NavItem key={2} onClick={() => browserHistory.push('/signup')}>
+              <NavItem key={3} onClick={() => browserHistory.push('/signup')}>
                 <Button bsStyle="primary">Signup</Button>
               </NavItem>
+
             ])}
           </Nav>
         </Navbar.Collapse>
@@ -64,4 +73,4 @@ const mapStateToProps = state => ({
   ...state
 });
 
-export default connect(mapStateToProps, { getAllEvents, logout })(NavBar);
+export default connect(mapStateToProps, { getAllEvents, logout, login })(NavBar);
