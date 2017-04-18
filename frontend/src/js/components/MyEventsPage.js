@@ -28,7 +28,7 @@ class MyEventsPage extends Component {
     }
     if (!this.props.user.user.events || this.props.user.user.events.length === 0) {
       return (
-        <div className="col-xs-6 col-xs-offset-2 col-md-4 col-md-offset-4">
+        <div className="col-xs-10 col-xs-offset-1 col-md-4 col-md-offset-4 col-lg-4 col-lg-offset-4">
           <div className="no-events">
           <ListGroupItem header="No events created yet.">
           </ListGroupItem>
@@ -55,7 +55,7 @@ class MyEventsPage extends Component {
     return (
       <div>
         {this.props.user.user.events.map((event, i) => (
-        <div key={i} className="col-xs-10 col-xs-offset-1 col-md-5 col-md-offset-1 col-lg-5 col-lg-offset-1">
+        <div key={i} className="col-xs-10 col-xs-offset-1 col-md-5 col-md-offset-1 col-lg-6 col-lg-offset-3">
         <Event key={i} {...event} routeLocation={this.props.location.pathname} deleteEvent={this.props.deleteEvent}/>
           &nbsp;
       </div>

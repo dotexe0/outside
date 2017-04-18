@@ -14,7 +14,7 @@ export default class Event extends Component {
 
     return (
       <div className={routeLocation === '/events' ?
-           'col-xs-10 col-xs-offset-1 col-md-5 col-md-offset-1 col-lg-4' :
+           'col-xs-12 col-md-12 col-lg-12' :
            'col-xs-12 col-md-12 col-lg-12'}>
         <Panel bsSize="large" header={`Event: ${eventName}`} bsStyle="info">
           <h5>Date: {moment(time).format('MMMM Do YYYY')}</h5>
