@@ -50,13 +50,13 @@ class FormComponent extends Component {
 
 render() {
 return (
-  <div className="text-center">
+  <div className="text-left">
     <div className="row">
       <div className="col-xs-8 col-xs-offset-2 col-md-4 col-md-offset-4 col-lg-4">
         <div className="card">
           <div className="card-block">
             <ListGroupItem>
-              <h3 className="card-title">Create a new Event</h3>
+              <h3 className="card-title text-center">Create a new Event</h3>
             </ListGroupItem>
 
             <form style={{marginBottom: '40px'}}>
@@ -64,14 +64,13 @@ return (
               <div className="form-group row">
                 <label htmlFor="text-input" className="col-2 col-form-label">Event Name: </label>
                 <div className="col-4">
-                  <input style={{width: '80%', margin:'0 auto'}} onChange={ this._eventName } className="form-control" type="text" placeholder="Graduation Party" id="text-input" required="true"></input>
+                  <input style={{width: '80%', margin:'0 auto'}} onChange={ this._eventName } className="form-control" type="text" placeholder="ex. Graduation Party" id="text-input" required="true"></input>
                 </div>
               </div>
             </ListGroupItem>
 
             <ListGroupItem bsStyle="info">
-              <div className="form-group row">
-                <label htmlFor="datetime-local-input" className="col-2 col-form-label">Pick a Date:</label><br/>
+              <div className="form-group row text-center">
                 <SingleDatePicker
                   date={this.state.date} // momentPropTypes.momentObj or null
                   onDateChange={date => {
@@ -121,7 +120,7 @@ return (
                   Make Private
                   </Checkbox>
               </div>
-            <button type="button" className="btn btn-primary" onClick={this._createEvent}>Create</button>
+            <button id="buttonSubmit" type="button" className="btn btn-primary center-block" onClick={this._createEvent}>Create</button>
             </ListGroupItem>
           </form>
 

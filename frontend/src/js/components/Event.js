@@ -19,8 +19,8 @@ export default class Event extends Component {
         <Panel bsSize="large" header={`Event: ${eventName}`} bsStyle="info">
           <h5>Date: {moment(time).format('MMMM Do YYYY')}</h5>
           <h5>Location: {location}</h5>
-          <h5>Description: {description}</h5>
           <h5>Invited: {invited.join(", ")}</h5>
+          <h5>Description: {description}</h5>
           {routeLocation === '/myEvents' &&
             <Button bsStyle="danger" onClick={() => this._deleteEvent(_id)}>Delete</Button>
           }

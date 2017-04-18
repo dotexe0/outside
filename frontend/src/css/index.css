@@ -13,3 +13,15 @@ body {
 #root {
   overflow-x: hidden;
 }
+
+.col-2.col-form-label, .control-label  {
+  margin-left: 50px;
+}
+
+.checkbox{
+  text-align: center;
+}
+
+#buttonSubmit  {
+  margin-bottom: 30px;
+}
