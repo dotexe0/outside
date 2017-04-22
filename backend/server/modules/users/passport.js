@@ -2,8 +2,7 @@ import passport from 'passport';
 import LocalStrategy from 'passport-local';
 import User from './model';
 
-//export module to expose it in our app
-// export default passport => {
+
   // ======================
   // PASSPORT SESSION SETUP
   // ======================
