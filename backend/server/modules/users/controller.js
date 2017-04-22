@@ -1,4 +1,3 @@
-// import passport from 'passport';
 // import './passport';
 import User from './model';
 // import Event from '../events/model';
